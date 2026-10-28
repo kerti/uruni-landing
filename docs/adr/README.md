@@ -15,7 +15,7 @@ consequences, and what would make us revisit it.
 | [0003](0003-public-repository.md)          | Public repository                                   | accepted |
 | [0004](0004-npm-scripts-as-task-runner.md) | npm scripts as the task runner                      | accepted |
 | [0005](0005-astro-as-framework.md)         | Astro as the framework                              | accepted |
-| [0006](0006-deploy-config-and-domain.md)   | Deploy config and production domain                 | proposed |
+| [0006](0006-deploy-config-and-domain.md)   | Deploy config and production domain                 | accepted |
 | [0007](0007-agent-operating-model.md)      | Agent operating model                               | accepted |
 | [0008](0008-light-theme-only.md)           | Light theme only until the app ships a dark palette | accepted |
 | [0009](0009-indonesian-only.md)            | Indonesian only, one locale                         | accepted |
