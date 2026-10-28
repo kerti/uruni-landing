@@ -1,0 +1,104 @@
+---
+// Yang bukan Uruni: what it is for, then what it deliberately leaves out.
+// Copy approved 2026-10-28. Every struck item is on CONTEXT.md's "Never" list;
+// add one here only if it is there too.
+import Icon from './Icon.astro';
+
+const is = 'Kas bersama kelompok kecil';
+const isNot = [
+  'Pengingat tagihan',
+  'Akun untuk anggota',
+  'Sinkron bank dan QRIS',
+  'Jurnal akuntansi',
+  'Sistem RT',
+];
+---
+
+<section class="section" aria-labelledby="yang-bukan-title">
+  <div class="container">
+    <div class="rise" data-reveal>
+      <p class="eyebrow">Yang bukan Uruni</p>
+      <h2 id="yang-bukan-title" class="section-title">
+        Satu pekerjaan, dikerjakan dengan baik.
+      </h2>
+      <p class="intro">
+        Uruni sengaja kecil. Yang tidak ada di sini memang tidak direncanakan, bukan terlewat.
+      </p>
+    </div>
+
+    <div data-reveal>
+      <ul class="chips rise" style="--delay: 100ms">
+        <li class="is">
+          <Icon name="check" size={18} />
+          <span>
+            <span class="sr-only">Untuk: </span>
+            {is}
+          </span>
+        </li>
+        {isNot.map((item) => (
+          <li class="not">
+            <Icon name="x" size={18} />
+            <span>
+              <span class="sr-only">Tidak termasuk: </span>
+              <s>{item}</s>
+            </span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .intro {
+    max-width: 36rem;
+    margin-top: 1.25rem;
+    color: var(--muted-foreground);
+    font-size: 1.0625rem;
+  }
+
+  /* Six chips, never wrapped inside: one column, then two by three, then
+     three by two, so they always pair evenly. */
+  .chips {
+    display: grid;
+    gap: 0.75rem;
+    max-width: 56rem;
+    margin: 2rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  @media (min-width: 40rem) {
+    .chips {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (min-width: 64rem) {
+    .chips {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .chips li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.625rem 0.875rem;
+    border-radius: 999px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .chips :global(svg) {
+    flex: none;
+  }
+  .is {
+    background-color: var(--success-soft);
+    color: var(--success);
+  }
+  .not {
+    background-color: var(--muted);
+    color: var(--muted-foreground);
+    font-weight: 500;
+  }
+  .not s {
+    text-decoration-thickness: 1.5px;
+  }
+</style>
