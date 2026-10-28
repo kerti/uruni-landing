@@ -32,8 +32,14 @@ if (!chromePath) {
   process.exit(2);
 }
 
-// Each shot: the screen, what to do on it, and the crop, from the element
-// whose text matches `from` down to the one whose text matches `to`.
+// The app's chrome, hidden on the signed-in screens: the header carries the
+// version number, and the bottom navigation isn't part of any shot.
+const APP_CHROME = 'body > div header, nav { display: none !important; }';
+
+// Each shot: the screen (a path, or a function that finds one), what to do on
+// it, what to hide, and the crop, from the element whose text matches `from`
+// down to the one whose text matches `to` (or the button, link or list row
+// around it).
 const SHOTS = [
   {
     name: 'catat',
@@ -42,6 +48,7 @@ const SHOTS = [
       await page.type('main input[inputmode="numeric"]', '75000');
       await page.type('main textarea', 'Snack rapat bulanan');
     },
+    hide: APP_CHROME,
     from: /^Catat transaksi$/,
     to: /^Simpan$/,
   },
@@ -53,14 +60,28 @@ const SHOTS = [
       await inputs[0].type(String(accounts.tunai.counted));
       await inputs[1].type(String(accounts.bank.counted));
     },
+    hide: APP_CHROME,
     from: /^Cek kas$/,
     to: /^Simpan hasil cek$/,
   },
   {
     name: 'laporan',
     path: '/settings',
+    hide: APP_CHROME,
     from: /^Laporan publik$/,
     to: /^Buat tautan baru$/,
+  },
+  {
+    // The public report itself, at the link Pengaturan shares. It has no app
+    // chrome; its month navigation stays.
+    name: 'laporan-publik',
+    async path(page) {
+      await page.goto(`${DEMO_URL}/settings`, { waitUntil: 'networkidle0' });
+      const href = await page.$eval('a[href*="/report/"]', (a) => a.getAttribute('href'));
+      return new URL(href, DEMO_URL).pathname;
+    },
+    from: /^Laporan kas$/,
+    to: /^Talangan belum dibayar$/,
   },
 ];
 
@@ -92,10 +113,9 @@ try {
   }
 
   for (const shot of SHOTS) {
-    await page.goto(`${DEMO_URL}${shot.path}`, { waitUntil: 'networkidle0' });
-    await page.addStyleTag({
-      content: 'body > div header, nav { display: none !important; }',
-    });
+    const path = typeof shot.path === 'function' ? await shot.path(page) : shot.path;
+    await page.goto(`${DEMO_URL}${path}`, { waitUntil: 'networkidle0' });
+    if (shot.hide) await page.addStyleTag({ content: shot.hide });
     await shot.fill?.(page);
     // Blur, so the inputs show their formatted value and no focus ring.
     await page.evaluate(() => document.activeElement?.blur());
@@ -112,7 +132,7 @@ try {
         if (!a || !b) return null;
         const top = a.getBoundingClientRect().top + window.scrollY - pad;
         const bottom =
-          (b.closest('button, a') ?? b).getBoundingClientRect().bottom + window.scrollY + pad;
+          (b.closest('button, a, li') ?? b).getBoundingClientRect().bottom + window.scrollY + pad;
         return { x: 0, y: Math.max(0, top), width: window.innerWidth, height: bottom - top };
       },
       shot.from.source,
