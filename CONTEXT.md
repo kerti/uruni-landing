@@ -13,6 +13,12 @@ which owns the domain vocabulary. Copy here stays at value-proposition altitude.
 domain term is needed, borrow the app's word (_kas_, _cek kas_, _cocok_, _selisih_, _amplop_,
 _titipan_, _talangan_, _golongan_, _laporan publik_) and never coin a synonym.
 
+**Never use one group's private names as generic examples** (2026-10-28). _Kas bidang_ is what one
+workplace calls its parent-unit fund, not a general term: it never appears in copy, alt text,
+examples or illustrative data. Describe a _titipan_ by what it does (money collected to be
+forwarded to someone else) and pick examples any small group would recognise. The app follows the
+same rule (kerti/uruni#725).
+
 ## 2. What Uruni is
 
 Uruni is a small, calm app for the accidental treasurer: the person who was asked to look after a
