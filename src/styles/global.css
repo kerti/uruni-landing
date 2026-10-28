@@ -82,6 +82,32 @@ a {
   border: 0;
 }
 
+/* A section's opening: the eyebrow (with an optional .dot) and its h2. */
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  color: var(--primary);
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+.dot {
+  width: 0.625rem;
+  height: 0.625rem;
+  border-radius: 999px;
+  background-color: var(--accent);
+}
+.section {
+  padding-block: var(--section-pad);
+}
+.section-title {
+  max-width: 32ch;
+  font-size: clamp(1.75rem, 1.25rem + 2vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
 /* Never wrap inside a figure or a short phrase. */
 .nowrap {
   white-space: nowrap;

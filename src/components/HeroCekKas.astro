@@ -17,7 +17,8 @@
 // in its row, so both places are fixed geometry: the vessel is 18rem wide and
 // centred, the rows have fixed line heights, and the figure is a size
 // container so its width (100cqi) is known. Change a row's padding, line
-// height or font size and the offsets in the motion block must follow.
+// height or font size and the offsets in the motion block must follow; --pad,
+// --chip and --gap are already variables.
 import Icon from './Icon.astro';
 import { accounts, counted, recorded } from '../data/fund';
 import { rupiah } from '../lib/format';
@@ -148,11 +149,25 @@ const label = `Uang tunai yang dihitung ${rupiah(accounts.tunai.counted)} dan sa
   }
 
   /* --- The tally (the resting state) -------------------------------- */
+  /* The row geometry the motion block's offsets are built from. A narrow
+     figure tightens it so "Rekening Bank" and a seven-digit amount share a
+     line. */
   .tally {
+    --pad: 1.5rem;
+    --chip: 2.5rem;
+    --gap: 0.75rem;
     position: relative;
     isolation: isolate;
-    padding: 1.5rem;
+    padding: var(--pad);
     font-variant-numeric: tabular-nums;
+  }
+  @container (max-width: 21rem) {
+    .tally {
+      --pad: 1rem;
+      --chip: 2rem;
+      --gap: 0.5rem;
+      font-size: 0.9375rem;
+    }
   }
   .card {
     position: absolute;
@@ -166,7 +181,7 @@ const label = `Uang tunai yang dihitung ${rupiah(accounts.tunai.counted)} dan sa
     display: grid;
     grid-template-columns: auto 1fr auto;
     align-items: center;
-    gap: 0.75rem;
+    gap: var(--gap);
     padding: 0.75rem 0;
   }
   .row + .row {
@@ -175,8 +190,8 @@ const label = `Uang tunai yang dihitung ${rupiah(accounts.tunai.counted)} dan sa
   .ico-chip {
     display: grid;
     place-items: center;
-    width: 2.5rem;
-    height: 2.5rem;
+    width: var(--chip);
+    height: var(--chip);
     border-radius: 999px;
     background-color: var(--secondary);
     color: var(--secondary-foreground);
@@ -187,6 +202,7 @@ const label = `Uang tunai yang dihitung ${rupiah(accounts.tunai.counted)} dan sa
     align-items: flex-start;
     font-weight: 600;
     line-height: 1.5rem;
+    white-space: nowrap;
   }
   .what small {
     font-size: 0.8125rem;
@@ -246,31 +262,32 @@ const label = `Uang tunai yang dihitung ${rupiah(accounts.tunai.counted)} dan sa
       --go: 1900ms;
     }
 
-    /* On a card, a piece sits centred: the chip at 0.75rem below the card's
-       top, the name at 3.75rem (13px), the amount at 5rem (15px, bold). In
-       its row, the chip is at 1.5rem from the left and 2.375rem from the
-       tally's top, the name at 4.75rem and 2.25rem, and the amount ends
-       1.5rem from the right, at 2.875rem. The percentages centre a piece by
-       its own width, scaled.
+    /* On a card, a piece sits centred: the chip 0.75rem below the card's
+       top, the name 0.5rem below the chip (at 13/16 size), the amount
+       1.25rem below the name (at 15/16, bold). In its row (0.75rem padding,
+       a 2.75rem name block), the chip sits at --pad from the left and is
+       centred on the block, the name follows the chip after --gap, and the
+       amount ends --pad from the right, 0.625rem down. The percentages
+       centre a piece by its own width, scaled.
 
        Across and down are separate animations (translate and transform), so
        a piece can take an L-shaped path: the bank's chip clears the row
        before its name rises into it, and its amount rises only once the
        name has gone. */
     .acct .ico-chip {
-      --fx: calc(var(--cx) - 2.75rem);
-      --fy: calc(var(--top) - 1.625rem - var(--dy));
+      --fx: calc(var(--cx) - var(--chip) / 2 - var(--pad));
+      --fy: calc(var(--top) - var(--pad) - (2.75rem - var(--chip)) / 2 - var(--dy));
     }
     .acct .name {
-      --fx: calc(var(--cx) - 4.75rem - 40.625%);
-      --fy: calc(var(--top) + 1.5rem - var(--dy));
+      --fx: calc(var(--cx) - var(--pad) - var(--chip) - var(--gap) - 40.625%);
+      --fy: calc(var(--top) + var(--chip) + 0.5rem - var(--pad) - var(--dy));
       --scale: 0.8125;
       --weight: 500;
       --color: var(--muted-foreground);
     }
     .acct .amt {
-      --fx: calc(var(--cx) - 100cqi + 1.5rem + 53.125%);
-      --fy: calc(var(--top) + 2.125rem - var(--dy));
+      --fx: calc(var(--cx) - 100cqi + var(--pad) + 53.125%);
+      --fy: calc(var(--top) + var(--chip) + 1.125rem - var(--pad) - var(--dy));
       --scale: 0.9375;
       --weight: 700;
     }
