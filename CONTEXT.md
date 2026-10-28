@@ -94,21 +94,21 @@ no "alpha" or "beta" badge, no roadmap promises. Each entry cites where the app 
 
 **Allowed (2026-10-28):**
 
-| Claim                                                                                                              | Source in `kerti/uruni`           |
-| ------------------------------------------------------------------------------------------------------------------ | --------------------------------- |
-| Record a transaction from a phone in a few taps                                                                    | PRD §4 goal 1, §7.2               |
-| Cash and bank kept apart, several accounts of either kind                                                          | `CONTEXT.md` Account / Location   |
-| _Cek kas_: counted cash and bank balance against the records, _cocok_ or _selisih_ per location, every check saved | PRD §7.8                          |
-| One pooled balance with purpose tags: Kas Utama, amplop, titipan                                                   | `CONTEXT.md` Purpose tag          |
-| Dues that vary by member tier (_golongan_), and a "who hasn't paid" view                                           | PRD §7.3                          |
-| _Talangan_, receipt optional                                                                                       | PRD §7.4                          |
-| _Amplop_ for an occasion; the leftover rolls into Kas Utama                                                        | PRD §7.5                          |
-| Public report: one link, no login, read-only                                                                       | PRD §7.9                          |
-| Posted transactions are never edited or deleted; a fix is a new entry                                              | `CONTEXT.md` Transaction          |
-| Automatic daily backups, downloadable and restorable in the app                                                    | PRD §7.10                         |
-| Runs on the community's own server; the project holds no data                                                      | PRD §5, `README.md`               |
-| Free forever, no paid tier; open source, AGPL-3.0                                                                  | `README.md` principles 7, licence |
-| Needs a technical helper to set up; needs a connection to use                                                      | PRD §3, §7.2; `README.md`         |
+| Claim                                                                                                              | Source in `kerti/uruni`                     |
+| ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------- |
+| Record a transaction from a phone in a few taps                                                                    | PRD §4 goal 1, §7.2                         |
+| Cash and bank kept apart, several accounts of either kind                                                          | `CONTEXT.md` Account / Location             |
+| _Cek kas_: counted cash and bank balance against the records, _cocok_ or _selisih_ per location, every check saved | PRD §7.8                                    |
+| One pooled balance with purpose tags: Kas Utama, amplop, titipan                                                   | `CONTEXT.md` Purpose tag                    |
+| Dues that vary by member tier (_golongan_), and a "who hasn't paid" view                                           | PRD §7.3                                    |
+| _Talangan_, receipt optional                                                                                       | PRD §7.4                                    |
+| _Amplop_ for an occasion; the leftover rolls into Kas Utama                                                        | PRD §7.5                                    |
+| Public report: one link, no login, read-only                                                                       | PRD §7.9                                    |
+| Posted transactions are never edited or deleted; a fix is a new entry                                              | `CONTEXT.md` Transaction                    |
+| Daily backups when something changed, downloadable and restorable in the app                                       | PRD §7.10, `copy/id.ts` (Cadangan otomatis) |
+| Runs on the community's own server; the project holds no data                                                      | PRD §5, `README.md`                         |
+| Free forever, no paid tier; open source, AGPL-3.0                                                                  | `README.md` principles 7, licence           |
+| Needs a technical helper to set up; needs a connection to use                                                      | PRD §3, §7.2; `README.md`                   |
 
 **Not yet (young or detail; revisit when durable):** the monthly PDF of the report (added
 2026-10-02), the Excel export, the twelve-month dues grid, waiving a _talangan_, per-envelope
