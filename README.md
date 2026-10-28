@@ -13,7 +13,7 @@ written in Bahasa Indonesia.
 
 ## Status
 
-Pre-launch: Astro toolchain and a placeholder page. No content yet. It will live at `https://uruni.kerti.dev`.
+Pre-launch: a placeholder page is live at <https://uruni.kerti.dev>. No content yet.
 
 ## Local development
 
@@ -28,7 +28,8 @@ npm run check      # the local mirror of CI: lint, format:check, astro check, bu
 
 ## Hosting
 
-Cloudflare Pages through its Git integration (ADR-0002); the concrete config goes in ADR-0006.
+Cloudflare Pages through its Git integration (ADR-0002), config in ADR-0006.
+`main` publishes to <https://uruni.kerti.dev>; every PR gets a preview URL.
 CI holds no deploy secrets.
 
 Licensed under [AGPL-3.0](LICENSE).
