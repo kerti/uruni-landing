@@ -1,0 +1,90 @@
+---
+// The footer: the wordmark, the canonical paragraph (CONTEXT.md section 2),
+// the links, and the icon credits the icon licences ask for. Labels approved
+// 2026-10-28; the first two match the app's own footer.
+import { APP_REPO_URL, LANDING_REPO_URL, LICENSE_URL } from '../consts';
+
+const links = [
+  { href: APP_REPO_URL, label: 'Kode sumber' },
+  { href: LICENSE_URL, label: 'Lisensi AGPL‑3.0' },
+  { href: LANDING_REPO_URL, label: 'Situs ini di GitHub' },
+];
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <img
+      class="lockup"
+      src="/brand/uruni-lockup-horizontal.svg"
+      alt="Uruni"
+      width="184"
+      height="64"
+      loading="lazy"
+    />
+    <p class="about">
+      Uruni adalah aplikasi sumber terbuka untuk bendahara kas kelompok kecil. Setiap transaksi
+      dicatat dari ponsel, uang tunai dan rekening bank dipisahkan, dan cek kas menunjukkan apakah
+      catatan cocok dengan uang yang ada. Uruni berjalan di server milik kelompok itu sendiri;
+      proyek Uruni tidak menyimpan data siapa pun. Gratis, selamanya.
+    </p>
+    <ul class="links">
+      {links.map((l) => (
+        <li>
+          <a href={l.href} target="_blank" rel="noopener noreferrer">
+            {l.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+    <p class="credits">
+      Ikon dari{' '}
+      <a href="https://lucide.dev" target="_blank" rel="noopener noreferrer">
+        Lucide
+      </a>{' '}
+      (lisensi ISC) dan{' '}
+      <a href="https://simpleicons.org" target="_blank" rel="noopener noreferrer">
+        Simple Icons
+      </a>{' '}
+      (CC0).
+    </p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    padding-block: 3rem;
+    border-top: 1px solid var(--border);
+    color: var(--muted-foreground);
+    font-size: 0.9375rem;
+  }
+  .lockup {
+    display: block;
+    height: 2.75rem;
+    width: auto;
+    margin-left: -0.75rem;
+  }
+  .about {
+    max-width: 40rem;
+    margin-top: 1rem;
+  }
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    margin: 1.5rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .links a {
+    display: inline-block;
+    padding-block: 0.375rem;
+    font-weight: 600;
+  }
+  .credits {
+    margin-top: 1.5rem;
+    font-size: 0.8125rem;
+  }
+  .credits a {
+    color: inherit;
+  }
+</style>

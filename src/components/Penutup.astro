@@ -1,0 +1,27 @@
+---
+// Penutup: the closing call to action. Heading approved 2026-10-28; the
+// buttons and caveat are the hero's, word for word (CONTEXT.md section 8).
+import Ctas from './Ctas.astro';
+---
+
+<section class="section" aria-labelledby="penutup-title">
+  <div class="container">
+    <div class="close rise" data-reveal>
+      <h2 id="penutup-title" class="section-title">
+        Coba dulu, pasang kalau cocok.
+      </h2>
+      <Ctas />
+    </div>
+  </div>
+</section>
+
+<style>
+  /* A card, not a tint: the secondary button is the tint, and must stay a
+     button on it. */
+  .close {
+    padding: clamp(1.25rem, 5vw, 3.5rem);
+    border-radius: 1.5rem;
+    background-color: var(--card);
+    box-shadow: var(--shadow-card);
+  }
+</style>
