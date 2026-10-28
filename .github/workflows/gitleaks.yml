@@ -1,0 +1,48 @@
+# Secret scanning, behind GitHub's native secret scanning and push protection
+# (ADR-0003): full-history scans, generic entropy rules, and a config that still
+# works if the repo goes private.
+#
+# Runs a pinned, checksum-verified gitleaks binary rather than the marketplace
+# action: one less third-party action to trust, and no org-licence gate.
+name: gitleaks
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  schedule:
+    # Weekly full-history rescan, Monday 06:00 UTC.
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: gitleaks-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  scan:
+    name: Scan for secrets
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      GITLEAKS_VERSION: 8.30.1
+      GITLEAKS_SHA256: 551f6fc83ea457d62a0d98237cbad105af8d557003051f41f3e7ca7b3f2470eb
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          # Full history so `gitleaks git` scans every commit, not just the tip.
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Run gitleaks
+        run: |
+          curl -sSfL \
+            "https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}/gitleaks_${GITLEAKS_VERSION}_linux_x64.tar.gz" \
+            -o gitleaks.tar.gz
+          echo "${GITLEAKS_SHA256}  gitleaks.tar.gz" | sha256sum -c -
+          tar -xzf gitleaks.tar.gz gitleaks
+          # Any finding exits non-zero and fails the job. --redact keeps the
+          # value out of the logs.
+          ./gitleaks git . --redact --verbose --config .gitleaks.toml

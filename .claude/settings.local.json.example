@@ -1,0 +1,14 @@
+{
+  "$comment": [
+    "Template for .claude/settings.local.json - YOUR settings for this clone,",
+    "gitignored. scripts/hooks-install.sh copies this into place if it is missing.",
+    "Claude Code also appends your 'don't ask again' approvals here."
+  ],
+  "attribution": {
+    "commit": "Co-Authored-By: Claude <noreply@anthropic.com>",
+    "pr": ""
+  },
+  "permissions": {
+    "allow": []
+  }
+}

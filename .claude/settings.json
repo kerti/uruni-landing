@@ -1,0 +1,73 @@
+{
+  "$comment": [
+    "Shared, committed Claude Code settings - every clone gets the same agent",
+    "behaviour (ADR-0007). Personal settings (permission approvals, commit",
+    "attribution) belong in .claude/settings.local.json, which is gitignored;",
+    "scripts/hooks-install.sh seeds it from settings.local.json.example.",
+    "Paths use ${CLAUDE_PROJECT_DIR} so this file is portable across clones.",
+    "model + effortLevel pin the orchestrator; /effort, --effort and",
+    "CLAUDE_CODE_EFFORT_LEVEL all override them. Role agents pin their own",
+    "effort in .claude/agents/*.md frontmatter.",
+    "CLAUDE_CODE_FORK_SUBAGENT=0 turns off forked subagents, which would run in",
+    "the background; this repo delegates only to its role agents, in the foreground.",
+    "gh issue: only view and list are allowed. Anyone can write an issue, so a",
+    "write always prompts - an instruction planted in one must never publish",
+    "without a human."
+  ],
+  "env": {
+    "CLAUDE_CODE_FORK_SUBAGENT": "0"
+  },
+  "model": "opus",
+  "effortLevel": "medium",
+  "permissions": {
+    "allow": [
+      "Bash(npm run check)",
+      "Bash(npm run lint)",
+      "Bash(npm run build)",
+      "Bash(npm run format)",
+      "Bash(npm run format:check)",
+      "Bash(npm run astro:check)",
+      "Bash(git status)",
+      "Bash(git diff *)",
+      "Bash(git log *)",
+      "Bash(git checkout -b *)",
+      "Bash(git switch -c *)",
+      "Bash(gh issue view *)",
+      "Bash(gh issue list)",
+      "Bash(gh issue list *)",
+      "Bash(gh pr view *)"
+    ]
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume",
+        "hooks": [
+          { "type": "command", "command": "${CLAUDE_PROJECT_DIR}/.claude/hooks/session-start.sh" }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          { "type": "command", "command": "${CLAUDE_PROJECT_DIR}/.claude/hooks/pre-push-gate.sh" }
+        ]
+      },
+      {
+        "matcher": "Agent",
+        "hooks": [
+          { "type": "command", "command": "${CLAUDE_PROJECT_DIR}/.claude/hooks/agent-gate.sh" }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          { "type": "command", "command": "${CLAUDE_PROJECT_DIR}/.claude/hooks/format-file.sh" }
+        ]
+      }
+    ]
+  }
+}
