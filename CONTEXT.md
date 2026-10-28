@@ -3,8 +3,8 @@
 The brand voice and the copy rules for this site. Every word on the page answers to this file.
 
 The copy spine (sections 5, 6, 8 and 10, the loanword list, and the canonical Indonesian paragraph)
-is a **draft for the maintainer's approval**, dated 2026-10-28. No page section is built until it
-is approved.
+was approved by the maintainer on 2026-10-28. Changing it is a dated edit to this file, in its own
+PR.
 
 ## 1. Scope
 
