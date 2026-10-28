@@ -1,0 +1,68 @@
+---
+// A grid of icon cards: one column, two by two from 36rem, four in a row from
+// 64rem. Used by Yang dicatat and Server sendiri.
+import Icon from './Icon.astro';
+import { lucide } from '../icons';
+
+interface Props {
+  cards: readonly { icon: keyof typeof lucide; title: string; body: string }[];
+}
+
+const { cards } = Astro.props;
+---
+
+<ul class="cards">
+  {cards.map((c) => (
+    <li class="card">
+      <span class="ico">
+        <Icon name={c.icon} size={22} />
+      </span>
+      <h3>{c.title}</h3>
+      <p>{c.body}</p>
+    </li>
+  ))}
+</ul>
+
+<style>
+  .cards {
+    display: grid;
+    gap: 1rem;
+    margin: clamp(2rem, 5vw, 3rem) 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  @media (min-width: 36rem) {
+    .cards {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (min-width: 64rem) {
+    .cards {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  .card {
+    padding: 1.5rem;
+    border-radius: 1rem;
+    background-color: var(--card);
+    box-shadow: var(--shadow-card);
+  }
+  .ico {
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    margin-bottom: 1rem;
+    border-radius: 0.75rem;
+    background-color: var(--secondary);
+    color: var(--secondary-foreground);
+  }
+  h3 {
+    font-size: 1.1875rem;
+    font-weight: 700;
+  }
+  .card p {
+    margin-top: 0.5rem;
+    color: var(--muted-foreground);
+  }
+</style>

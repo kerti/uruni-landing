@@ -1,0 +1,77 @@
+---
+// Server sendiri: where the data lives and why it is safe there, then the
+// honest caveat about setting it up. Copy approved 2026-10-28; every card is
+// on CONTEXT.md's claims list. Talks to the group, so kalian (CONTEXT.md 7).
+import IconCards from './IconCards.astro';
+import { SELF_HOSTING_URL } from '../consts';
+
+const cards = [
+  {
+    icon: 'server',
+    title: 'Di server kalian',
+    body: 'Uruni berjalan di server milik kelompok kalian. Proyek Uruni tidak menjalankan layanan dan tidak menyimpan data siapa pun.',
+  },
+  {
+    icon: 'codeXml',
+    title: 'Sumber terbuka',
+    body: 'Kodenya terbuka dengan lisensi AGPL\u20113.0. Siapa pun bisa memeriksa, memasang, dan ikut\u00a0memperbaikinya.',
+  },
+  {
+    icon: 'archive',
+    title: 'Cadangan harian',
+    body: 'Uruni menyimpan cadangan baru setiap hari, kalau ada perubahan. Cadangan bisa diunduh dan dipulihkan dari aplikasi.',
+  },
+  {
+    icon: 'history',
+    title: 'Tidak ada yang dihapus',
+    body: 'Transaksi yang sudah tersimpan tidak bisa diubah atau dihapus. Salah catat dibetulkan dengan catatan baru, jadi riwayatnya tetap utuh.',
+  },
+] as const;
+---
+
+<section id="server-sendiri" class="section" aria-labelledby="server-sendiri-title">
+  <div class="container">
+    <div class="rise" data-reveal>
+      <p class="eyebrow">Server sendiri</p>
+      <h2 id="server-sendiri-title" class="section-title">
+        Datanya tinggal di server kalian sendiri.
+      </h2>
+    </div>
+
+    <div class="rise" data-reveal style="--delay: 100ms">
+      <IconCards cards={cards} />
+    </div>
+
+    <div class="caveat rise" data-reveal>
+      <p>
+        Memasang Uruni butuh seseorang yang terbiasa mengurus <span lang="en">server</span>. Setelah
+        terpasang, bendahara cukup memakainya dari ponsel.
+      </p>
+      <a href={SELF_HOSTING_URL} target="_blank" rel="noopener noreferrer">
+        Panduan pemasangan <span class="lang">(bahasa Inggris)</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .caveat {
+    display: grid;
+    gap: 0.5rem;
+    max-width: 40rem;
+    margin-top: 2rem;
+    padding: 1.25rem 1.5rem;
+    border-radius: 1rem;
+    background-color: var(--muted);
+  }
+  .caveat p {
+    color: var(--foreground);
+  }
+  .caveat a {
+    justify-self: start;
+    font-weight: 600;
+  }
+  .lang {
+    font-weight: 400;
+  }
+</style>
