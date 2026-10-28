@@ -18,6 +18,7 @@ export const lucide = {
     'M6 18v-7',
   ],
   check: ['M20 6 9 17l-5-5'],
+  x: ['M18 6 6 18', 'm6 6 12 12'],
   // The app's cocok and selisih marks. Lucide draws the circle as <circle>;
   // here it is the same circle as a path.
   circleCheck: ['M2 12a10 10 0 1 0 20 0a10 10 0 1 0-20 0', 'm16 9-5.5 5.5L8 12'],
