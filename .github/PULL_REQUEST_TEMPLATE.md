@@ -12,7 +12,7 @@ Label: exactly one of enhancement / bug / documentation / dependencies.
 ## Checked
 
 - [ ] `npm run check` is green
-- [ ] Copy follows `CONTEXT.md`: naming law, claims list, anti-slop rules, *kamu* only
+- [ ] Copy follows `CONTEXT.md`: naming law, claims list, anti-slop rules, _kamu_ only
 - [ ] New claims checked against the app repo's docs and listed here
 - [ ] No secrets, real personal data or absolute local paths in the diff or this body
 - [ ] Static only holds (ADR-0001); any client script has a stated reason

@@ -13,8 +13,8 @@ Work the checklist and say loudly what the diff doesn't touch:
 
 - **Naming law:** "Uruni" in text, never inflected; lowercase only as the wordmark.
 - **Claims:** every feature the copy names is on `CONTEXT.md`'s claims list. No version numbers, no "beta", no roadmap.
-- **Voice:** *kamu* or impersonal, never *Anda*; no em dashes; curly quotes; the anti-slop list in `CONTEXT.md` (English and Indonesian tells); no phrase repeated three or more times on the page.
-- **Formatting:** `Rp1.250.000`, `12,5%`, *28 Oktober 2026*; data-driven numbers through `Intl` `id-ID`.
+- **Voice:** _kamu_ or impersonal, never _Anda_; no em dashes; curly quotes; the anti-slop list in `CONTEXT.md` (English and Indonesian tells); no phrase repeated three or more times on the page.
+- **Formatting:** `Rp1.250.000`, `12,5%`, _28 Oktober 2026_; data-driven numbers through `Intl` `id-ID`.
 - **Static only:** no forms, analytics, cookies or third-party origins; any client script has a reason and works as progressive enhancement.
 - **Design:** tokens only, no hard-coded colours; explicit grid columns, never `auto-fit`; brand files byte-identical to the app.
 - **Accessibility:** one H1, logical headings, labelled navs, alt text and `aria-label`s in Indonesian, `lang="en"` on English phrases, decorative SVGs `aria-hidden`, tap targets at least 24px.

@@ -8,19 +8,13 @@ The landing site for Uruni. A small, opinionated repo; a little orientation save
 - **Why the repo is set up this way:** [`docs/adr/`](docs/adr/), one numbered decision per file.
 - **Working with AI agents:** [`CLAUDE.md`](CLAUDE.md) (also `AGENTS.md`) and
   [`.claude/README.md`](.claude/README.md).
-- **Domain questions** (what *cek kas* or *amplop* means): the app's
+- **Domain questions** (what _cek kas_ or _amplop_ means): the app's
   [`CONTEXT.md`](https://github.com/kerti/uruni/blob/main/CONTEXT.md).
 
 ## Local setup
 
 ```sh
-brew install gitleaks   # the pre-commit secret guard is a no-op without it
-sh scripts/hooks-install.sh
-```
-
-Once the Astro toolchain lands (Phase B):
-
-```sh
+brew install gitleaks jq   # the secret guard and the Claude Code hooks are no-ops without them
 npm install       # the "prepare" script also installs the git hooks
 npm run dev       # http://localhost:4321
 npm run check     # mirrors CI: lint, format:check, astro check, build
