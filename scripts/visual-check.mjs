@@ -151,13 +151,18 @@ try {
     await page.setViewport({ width, height, deviceScaleFactor: 1 });
     await page.goto(new URL(path, base).href, { waitUntil: 'networkidle0' });
     await page.evaluate(() => document.fonts.ready);
-    // Scroll through so scroll-triggered reveals get their chance.
+    // Scroll through so scroll-triggered reveals get their chance. Instant,
+    // because the page's smooth scrolling would still be travelling when the
+    // next step (or the measurement) runs.
     await page.evaluate(async () => {
+      const to = (top) => window.scrollTo({ top, behavior: 'instant' });
       for (let y = 0; y < document.body.scrollHeight; y += window.innerHeight / 2) {
-        window.scrollTo(0, y);
+        to(y);
         await new Promise((r) => setTimeout(r, 120));
       }
-      window.scrollTo(0, 0);
+      to(document.body.scrollHeight);
+      await new Promise((r) => setTimeout(r, 120));
+      to(0);
     });
     await sleep(400);
     const r = await page.evaluate(measure);
