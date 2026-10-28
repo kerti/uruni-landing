@@ -191,7 +191,8 @@ wording is drafted with each slice.
 2. **Hero:** eyebrow, H1, subhead, both CTAs, caveat, fact chips, and an illustration that sells
    _cocok_: the counted cash and the bank balance adding up to the recorded balance, with the
    _Cocok_ state from the app. Not a screenshot. 2026-10-28: the illustration opens as the brand's
-   vessel (the two amounts flowing into it) and hands over to the tally, once, about 2.5 s, when it
+   vessel (the two account cards, one after the other, each drawing its stream into it); then the
+   cards' icon, name and amount travel into the tally's first two rows. Once, about 3.3 s, when it
    scrolls into view; reduced motion shows the tally straight away.
 3. **Cara kerja** (`#cara-kerja`): three steps, alternating with demo screenshots: _Catat_, _Cek
    kas_, _Bagikan laporan_.
