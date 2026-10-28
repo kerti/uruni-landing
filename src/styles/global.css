@@ -29,10 +29,13 @@ body {
 
 /* Scroll-triggered reveals (components/Reveal.astro): under .motion, anything
    marked [data-reveal] holds its animations on the first frame until it is in
-   view. Without .motion, animations play on load. */
+   view. Without .motion, animations play on load. Important, because an
+   `animation` shorthand resets the play state to running, and a component's
+   scoped rule outranks this one: the hero's rows played from page load while
+   the rest of it waited. */
 .motion [data-reveal]:not(.in-view),
 .motion [data-reveal]:not(.in-view) * {
-  animation-play-state: paused;
+  animation-play-state: paused !important;
 }
 
 /* The quiet entrance for section content: a short rise, once, as it scrolls
