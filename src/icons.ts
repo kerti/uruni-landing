@@ -50,6 +50,7 @@ export const lucide = {
     'M10 12h4',
   ],
   history: ['M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8', 'M3 3v5h5', 'M12 7v5l4 2'],
+  chevronDown: ['m6 9 6 6 6-6'],
   // The app's cocok and selisih marks. Lucide draws the circle as <circle>;
   // here it is the same circle as a path.
   circleCheck: ['M2 12a10 10 0 1 0 20 0a10 10 0 1 0-20 0', 'm16 9-5.5 5.5L8 12'],

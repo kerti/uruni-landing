@@ -1,0 +1,171 @@
+---
+// Tanya jawab: plain <details>, no script (CONTEXT.md section 10, item 10).
+// Answers approved 2026-10-28; each stays inside the claims list. Q8 rests on
+// the PRD's "losing the phone loses nothing" (§8), which follows from the data
+// living on the server.
+import Icon from './Icon.astro';
+import { APP_REPO_URL, DEMO_URL, SELF_HOSTING_URL } from '../consts';
+
+const ext = { target: '_blank', rel: 'noopener noreferrer' };
+---
+
+<section class="section" aria-labelledby="tanya-jawab-title">
+  <div class="container">
+    <div class="rise" data-reveal>
+      <p class="eyebrow">Tanya jawab</p>
+      <h2 id="tanya-jawab-title" class="section-title">
+        Yang sering&nbsp;ditanyakan.
+      </h2>
+    </div>
+
+    <div class="faq rise" data-reveal style="--delay: 100ms">
+      <details>
+        <summary>
+          Berapa biayanya?
+          <Icon name="chevronDown" size={20} />
+        </summary>
+        <p>
+          Gratis, selamanya. Tidak ada versi berbayar. Biayanya hanya server tempat Uruni dipasang,
+          yang disediakan kelompok kalian sendiri.
+        </p>
+      </details>
+      <details>
+        <summary>
+          Ada versi yang tinggal pakai?
+          <Icon name="chevronDown" size={20} />
+        </summary>
+        <p>
+          Tidak ada. Proyek Uruni tidak menjalankan layanan; setiap kelompok memasangnya di server
+          sendiri. Kalau ingin mencoba dulu, pakai{' '}
+          <a href={DEMO_URL} {...ext}>
+            demo
+          </a>
+          .
+        </p>
+      </details>
+      <details>
+        <summary>
+          Apa yang dibutuhkan untuk&nbsp;memasangnya?
+          <Icon name="chevronDown" size={20} />
+        </summary>
+        <p>
+          Server yang selalu menyala dan seseorang yang terbiasa mengurusnya.{' '}
+          <a href={SELF_HOSTING_URL} {...ext}>
+            Panduan pemasangan
+          </a>{' '}
+          (bahasa Inggris) menjelaskan&nbsp;langkah-langkahnya.
+        </p>
+      </details>
+      <details>
+        <summary>
+          Siapa yang bisa melihat&nbsp;datanya?
+          <Icon name="chevronDown" size={20} />
+        </summary>
+        <p>
+          Hanya bendahara yang masuk ke aplikasi. Siapa pun yang memegang tautan laporan bisa
+          membaca laporannya, tanpa bisa mengubah apa pun. Datanya tetap di server kalian; proyek
+          Uruni tidak menyimpannya.
+        </p>
+      </details>
+      <details>
+        <summary>
+          Apakah anggota perlu akun?
+          <Icon name="chevronDown" size={20} />
+        </summary>
+        <p>Tidak. Anggota membuka laporan lewat tautan; hanya bendahara yang masuk ke aplikasi.</p>
+      </details>
+      <details>
+        <summary>
+          Bisa dipakai tanpa internet?
+          <Icon name="chevronDown" size={20} />
+        </summary>
+        <p>
+          Tidak. Uruni butuh koneksi untuk mencatat, karena catatannya disimpan di server, bukan di
+          ponsel.
+        </p>
+      </details>
+      <details>
+        <summary>
+          Kalau salah catat?
+          <Icon name="chevronDown" size={20} />
+        </summary>
+        <p>
+          Buat catatan koreksi. Transaksi yang sudah tersimpan tidak diubah atau dihapus, jadi
+          riwayatnya tetap utuh.
+        </p>
+      </details>
+      <details>
+        <summary>
+          Kalau ponsel hilang?
+          <Icon name="chevronDown" size={20} />
+        </summary>
+        <p>Tidak ada yang hilang. Semua catatan ada di server; masuk saja dari ponsel lain.</p>
+      </details>
+      <details>
+        <summary>
+          Cocok untuk RT yang besar?
+          <Icon name="chevronDown" size={20} />
+        </summary>
+        <p>
+          Uruni dibuat untuk kelompok kecil, sekitar 5 sampai 20 orang, dengan satu bendahara. RT
+          yang besar biasanya butuh lebih dari itu, misalnya beberapa pengurus atau tagihan
+          otomatis, dan itu memang bukan tujuan Uruni.
+        </p>
+      </details>
+      <details>
+        <summary>
+          Bagaimana cara ikut&nbsp;membantu?
+          <Icon name="chevronDown" size={20} />
+        </summary>
+        <p>
+          Kodenya ada di{' '}
+          <a href={APP_REPO_URL} {...ext}>
+            GitHub
+          </a>
+          . Laporkan masalah, usulkan perbaikan, atau bantu kelompok di sekitarmu&nbsp;memasangnya.
+        </p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq {
+    max-width: 48rem;
+    margin-top: clamp(2rem, 5vw, 3rem);
+    border-top: 1px solid var(--border);
+  }
+  details {
+    border-bottom: 1px solid var(--border);
+  }
+  summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    min-height: 3.5rem;
+    padding: 0.875rem 0;
+    font-size: 1.0625rem;
+    font-weight: 600;
+    cursor: pointer;
+    list-style: none;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+  summary :global(svg) {
+    flex: none;
+    color: var(--muted-foreground);
+  }
+  details[open] summary :global(svg) {
+    transform: rotate(180deg);
+  }
+  summary:hover {
+    color: var(--primary);
+  }
+  details p {
+    max-width: 40rem;
+    padding-bottom: 1.25rem;
+    color: var(--muted-foreground);
+  }
+</style>
