@@ -1,7 +1,7 @@
 ---
-// Copy from CONTEXT.md sections 5 and 8 (approved 2026-10-28). The CTA block is
-// repeated word for word by the closing section.
-import { DEMO_URL, SELF_HOSTING_URL } from '../consts';
+// Copy from CONTEXT.md sections 5 and 8 (approved 2026-10-28). The buttons and
+// caveat are Ctas, which the closing section repeats word for word.
+import Ctas from './Ctas.astro';
 import HeroCekKas from './HeroCekKas.astro';
 
 const chips = ['Gratis selamanya', 'Sumber terbuka', 'Di server sendiri', 'Berbahasa Indonesia'];
@@ -19,18 +19,7 @@ const chips = ['Gratis selamanya', 'Sumber terbuka', 'Di server sendiri', 'Berba
         melihat saldo rekening; Uruni membandingkannya dengan catatan dan menunjukkan selisihnya
         kalau ada.
       </p>
-      <div class="ctas">
-        <a class="btn primary" href={DEMO_URL} target="_blank" rel="noopener noreferrer">
-          Coba demo
-        </a>
-        <a class="btn secondary" href={SELF_HOSTING_URL} target="_blank" rel="noopener noreferrer">
-          Panduan pemasangan <span class="lang">(bahasa Inggris)</span>
-        </a>
-      </div>
-      <p class="caveat">
-        Tanpa daftar. Datanya rekaan dan siapa pun bisa mengubahnya; demo kembali bersih paling lama
-        setiap jam.
-      </p>
+      <Ctas />
       <ul class="chips">
         {chips.map((c) => (
           <li>{c}</li>
@@ -71,55 +60,6 @@ const chips = ['Gratis selamanya', 'Sumber terbuka', 'Di server sendiri', 'Berba
     max-width: 34rem;
     color: var(--muted-foreground);
     font-size: 1.125rem;
-  }
-
-  .ctas {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    margin-top: 2rem;
-  }
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.375rem;
-    min-height: 2.75rem;
-    padding: 0.625rem 1.25rem;
-    border-radius: 0.75rem;
-    font-weight: 600;
-    text-decoration: none;
-  }
-  .primary {
-    background-color: var(--primary);
-    color: var(--primary-foreground);
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.2),
-      0 1px 2px rgba(34, 50, 58, 0.12),
-      0 2px 6px rgba(34, 50, 58, 0.08);
-  }
-  .primary:hover {
-    background-color: var(--primary-hover);
-  }
-  .secondary {
-    background-color: var(--secondary);
-    color: var(--secondary-foreground);
-  }
-  .lang {
-    font-weight: 400;
-    font-size: 0.875rem;
-  }
-  @media (max-width: 29.99rem) {
-    .btn {
-      width: 100%;
-    }
-  }
-
-  .caveat {
-    margin-top: 0.875rem;
-    max-width: 34rem;
-    color: var(--muted-foreground);
-    font-size: 0.875rem;
   }
 
   .chips {

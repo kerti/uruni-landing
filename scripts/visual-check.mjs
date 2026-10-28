@@ -6,8 +6,8 @@
 //
 // For each viewport: a full-page screenshot in .visual/, and a report of
 // horizontal overflow (and the elements causing it), one-word last lines in
-// headings and short texts, and [data-reveal] content left hidden after a full
-// scroll. Exits 1 if anything is reported.
+// headings and short texts, words glued to a link or span, and [data-reveal]
+// content left hidden after a full scroll. Exits 1 if anything is reported.
 //
 // Uses the Chrome already installed (puppeteer-core downloads nothing); set
 // CHROME_PATH if it isn't in the usual place.
@@ -136,11 +136,27 @@ function measure() {
     }
   }
 
+  // Words glued to an inline element: a formatter that wraps a line just
+  // before <a> or <span lang> leaves no space in the built HTML.
+  const glued = [];
+  for (const el of document.querySelectorAll('body a, body span, body s, body b, body small')) {
+    if (el.closest('[aria-hidden="true"]')) continue;
+    const text = el.textContent;
+    const prev = el.previousSibling;
+    const next = el.nextSibling;
+    if (prev?.nodeType === 3 && /[\p{L}.,;:]$/u.test(prev.data) && /^\p{L}/u.test(text)) {
+      glued.push(`“…${prev.data.slice(-12)}${text.slice(0, 12)}…”`);
+    }
+    if (next?.nodeType === 3 && /[\p{L}.]$/u.test(text) && /^[\p{L}(]/u.test(next.data)) {
+      glued.push(`“…${text.slice(-12)}${next.data.slice(0, 12)}…”`);
+    }
+  }
+
   const hidden = [...document.querySelectorAll('[data-reveal]')]
     .filter((el) => !el.classList.contains('in-view'))
     .map((el) => el.id || el.tagName.toLowerCase());
 
-  return { overflow, wide: wide.slice(0, 5), lone, hidden };
+  return { overflow, wide: wide.slice(0, 5), lone, glued, hidden };
 }
 
 const browser = await puppeteer.launch({ executablePath: chromePath, headless: true });
@@ -172,6 +188,7 @@ try {
     const issues = [];
     if (r.overflow > 0) issues.push(`overflow ${r.overflow}px: ${r.wide.join(', ')}`);
     for (const l of r.lone) issues.push(`lone word ${l}`);
+    for (const g of r.glued) issues.push(`no space ${g}`);
     if (r.hidden.length) issues.push(`not revealed: ${r.hidden.join(', ')}`);
     problems += issues.length;
     console.log(`${issues.length ? 'x' : 'ok'} ${width}x${height}  ${file}`);
