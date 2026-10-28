@@ -2,3 +2,7 @@ dist/
 .astro/
 package-lock.json
 LICENSE
+# Copied verbatim from the app by scripts/brand-sync.sh; formatting would break byte-identity.
+src/styles/tokens.css
+public/brand/
+public/favicon.svg

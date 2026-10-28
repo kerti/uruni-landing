@@ -1,23 +1,26 @@
 ---
 // Placeholder until the content slices land. Indonesian only (ADR-0009).
+import Base from '../layouts/Base.astro';
 import { APP_REPO_URL } from '../consts';
 ---
 
-<!doctype html>
-<html lang="id">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="robots" content="noindex" />
-    <title>Uruni</title>
-  </head>
-  <body>
-    <main>
-      <h1>Uruni</h1>
-      <p>Halaman ini sedang disiapkan.</p>
-      <p>
-        <a href={APP_REPO_URL}>Kode sumber Uruni di GitHub</a>
-      </p>
-    </main>
-  </body>
-</html>
+<Base title="Uruni">
+  <meta slot="head" name="robots" content="noindex" />
+  <main class="placeholder">
+    <h1>
+      <img src="/brand/uruni-lockup-horizontal.svg" alt="Uruni" width="184" height="64" />
+    </h1>
+    <p>Halaman ini sedang disiapkan.</p>
+    <p>
+      <a href={APP_REPO_URL}>Kode sumber Uruni di GitHub</a>
+    </p>
+  </main>
+</Base>
+
+<style>
+  .placeholder {
+    max-width: 36rem;
+    margin: 0 auto;
+    padding: 4rem 1rem;
+  }
+</style>

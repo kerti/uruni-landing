@@ -1,0 +1,60 @@
+/* Design tokens.
+ *
+ * The block between the markers is the app's palette, copied verbatim from
+ * kerti/uruni web/src/index.css by scripts/brand-sync.sh. The app owns the
+ * brand (CONTEXT.md section 4): never edit inside the markers; change the app,
+ * then re-run the sync. Light theme only (ADR-0008).
+ */
+
+/* BEGIN app tokens (scripts/brand-sync.sh) */
+/* The palette is Design-System.md verbatim - Forest as the action colour, Sage
+   as a tint only, and gentle semantics (terracotta for "selisih", never
+   alarm-red). Change these there first, then here. */
+:root {
+  --background: #f6f4ef;
+  --foreground: #22323a;
+  --card: #ffffff;
+  --card-foreground: #22323a;
+  --popover: #ffffff;
+  --popover-foreground: #22323a;
+
+  --primary: #1f5d50;
+  --primary-foreground: #ffffff;
+  --primary-hover: #184c41;
+  --secondary: #e7f1ea;
+  --secondary-foreground: #1f5d50;
+  --accent: #7bae8d;
+  --accent-foreground: #22323a;
+
+  --muted: #eeebe3;
+  --muted-foreground: #5e6b71; /* 4.62:1 on --muted, 5.0:1 on the page (#508) */
+  --border: #e4e0d7;
+  /* A step darker than the --border hairline: a field is something to type into,
+       and at the hairline's shade its edge all but vanished on the cream. */
+  --input: #998a6c; /* 3.08:1 on the page, 3.38:1 on a card: AA non-text (#508) */
+  --ring: #2f6f60;
+
+  --success: #2c7756; /* 4.65:1 on success-soft, 4.92:1 on the page (#526) */
+  --success-soft: #e3f1e9;
+  --attention: #c96c4a;
+  --attention-soft: #f6e6dd;
+  /* Text-only terracotta: --attention reads 3.02:1 on attention-soft and
+       3.34:1 on the page, under AA's 4.5:1 for text. The same hue, darkened just
+       past 4.5:1 on both; --attention stays for icons and fills. */
+  --attention-text: #a55031;
+  --destructive: #b4453c;
+  --destructive-foreground: #ffffff;
+
+  /* 8px: 14px made cards ~25px and buttons ~20px round, which read as
+       soft-to-bubbly on a phone. Every rounded-* scales from this one token. */
+  --radius: 0.5rem;
+}
+/* END app tokens */
+
+/* Landing-owned tokens, built from the app's. */
+:root {
+  color-scheme: light;
+
+  /* The app's font stack (web/src/index.css, @theme --font-sans). */
+  --font-sans: 'Plus Jakarta Sans Variable', ui-sans-serif, system-ui, sans-serif;
+}

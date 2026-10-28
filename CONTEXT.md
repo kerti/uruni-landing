@@ -51,7 +51,8 @@ server.
 
 ## 4. Brand assets and source of truth
 
-- **Copied verbatim from the app** (byte-identical; re-copy when the app changes, never edit here):
+- **Copied verbatim from the app** by `scripts/brand-sync.sh` (the `brand-sync` skill; byte-identical,
+  re-copied when the app changes, never edited here):
   favicon, logomark and lockup SVGs (`docs/brand/` in the app), design tokens (`web/src/index.css`
   and `docs/Design-System.md`), and the font (Plus Jakarta Sans via `@fontsource-variable`).
 - **Owned by the landing:** the share image, and compositional tokens built from the app's
