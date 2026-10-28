@@ -1,0 +1,141 @@
+---
+// Cara kerja: three steps, each beside a screenshot of the demo. Copy approved
+// 2026-10-28. The screenshots come from scripts/demo-shots.mjs; retake them
+// with npm run demo-shots, never by hand.
+import { Picture } from 'astro:assets';
+import catat from '../assets/demo/catat.png';
+import cekKas from '../assets/demo/cek-kas.png';
+import laporan from '../assets/demo/laporan.png';
+import { accounts } from '../data/fund';
+import { rupiah } from '../lib/format';
+
+// Bodies are trusted literals, rendered as HTML so an English word can carry
+// lang="en" (CONTEXT.md, loanwords).
+const steps = [
+  {
+    title: 'Catat saat itu juga',
+    body: 'Uang masuk atau keluar dicatat dari ponsel dalam beberapa ketukan, di warung atau di kantor. Setiap catatan menyebut lokasinya (tunai atau rekening) dan posnya.',
+    image: catat,
+    alt: `Layar Catat transaksi: pengeluaran ${rupiah(75_000)} dari Tunai untuk Kas Utama, dengan catatan Snack rapat bulanan.`,
+  },
+  {
+    title: 'Cek kas kapan saja',
+    body: 'Hitung uang tunai dan lihat saldo rekening, lalu masukkan angkanya. Uruni membandingkannya dengan catatan, lokasi demi lokasi, dan menjawab cocok atau menunjukkan selisihnya. Setiap hasil cek tersimpan.',
+    image: cekKas,
+    alt: `Layar Cek kas: Tunai ${rupiah(accounts.tunai.counted)} dan Rekening Bank ${rupiah(accounts.bank.counted)} sama dengan catatan; keduanya bertanda Kas dan catatan sudah cocok.`,
+  },
+  {
+    title: 'Bagikan satu tautan',
+    body: 'Anggota membaca laporan kas lewat satu tautan, tanpa <span lang="en">login</span> dan tanpa bisa mengubah apa pun.',
+    image: laporan,
+    alt: 'Kartu Laporan publik di Pengaturan, dengan tautan laporan serta tombol Salin, Bagikan, dan Buka laporan.',
+  },
+];
+---
+
+<section id="cara-kerja" class="section" aria-labelledby="cara-kerja-title">
+  <div class="container">
+    <div class="rise" data-reveal>
+      <p class="eyebrow">Cara kerja</p>
+      <h2 id="cara-kerja-title" class="section-title">
+        Kebiasaan kecil yang membuat kas tetap rapi.
+      </h2>
+    </div>
+
+    <ol class="steps">
+      {steps.map((s, i) => (
+        <li class="step" data-reveal>
+          <div class="text rise">
+            <span class="num" aria-hidden="true">
+              {i + 1}
+            </span>
+            <h3>{s.title}</h3>
+            <p set:html={s.body} />
+          </div>
+          <Picture
+            class="shot"
+            src={s.image}
+            alt={s.alt}
+            formats={['avif', 'webp']}
+            widths={[390, 780]}
+            sizes="(min-width: 26.5rem) 390px, calc(100vw - 2rem)"
+            loading="lazy"
+            decoding="async"
+            pictureAttributes={{ class: 'rise', style: '--delay: 100ms' }}
+          />
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .steps {
+    display: grid;
+    gap: clamp(3rem, 7vw, 5rem);
+    margin: clamp(2.5rem, 6vw, 4rem) 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .step {
+    display: grid;
+    gap: 1.75rem;
+    align-items: center;
+  }
+  @media (min-width: 56rem) {
+    .step {
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+    }
+    /* Alternate: the second step puts its screenshot first. */
+    .step:nth-child(even) .text {
+      order: 2;
+    }
+  }
+
+  .text {
+    max-width: 30rem;
+  }
+  .num {
+    display: grid;
+    place-items: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    margin-bottom: 1rem;
+    border-radius: 999px;
+    background-color: var(--secondary);
+    color: var(--secondary-foreground);
+    font-weight: 700;
+  }
+  h3 {
+    font-size: clamp(1.375rem, 1.2rem + 0.8vw, 1.75rem);
+    font-weight: 700;
+    letter-spacing: -0.015em;
+  }
+  .text p {
+    margin-top: 0.75rem;
+    color: var(--muted-foreground);
+    font-size: 1.0625rem;
+  }
+
+  /* Shown at the 390px it was captured at, so a 1x screen draws it pixel for
+     pixel and a 2x screen gets the 780 file at exactly half; any other width
+     resamples small text into blur. Narrower viewports scale it down. The
+     hairline is a shadow ring, because a border would take 2px of the width.
+     The screenshot is the app on its own background, so the ring and the
+     card shadow set it apart from the page. */
+  .step :global(picture) {
+    justify-self: center;
+    width: 100%;
+    max-width: 390px;
+  }
+  .step :global(.shot) {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 1rem;
+    box-shadow:
+      0 0 0 1px var(--border),
+      var(--shadow-card);
+  }
+</style>

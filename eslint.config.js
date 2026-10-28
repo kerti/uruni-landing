@@ -14,8 +14,8 @@ export default [
     languageOptions: { globals: globals.node },
   },
   {
-    // visual-check passes functions into the page, where they run in a browser.
-    files: ['scripts/visual-check.mjs'],
+    // These scripts pass functions into the page, where they run in a browser.
+    files: ['scripts/visual-check.mjs', 'scripts/demo-shots.mjs'],
     languageOptions: { globals: { ...globals.node, ...globals.browser } },
   },
   {
