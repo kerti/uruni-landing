@@ -35,6 +35,22 @@ body {
   animation-play-state: paused;
 }
 
+/* The quiet entrance for section content: a short rise, once, as it scrolls
+   in. Put .rise inside (or on) a [data-reveal]; --delay staggers siblings.
+   The hero's illustration is the page's one big moment, so keep this to
+   headings and blocks, never chips, buttons or small items. */
+@media (prefers-reduced-motion: no-preference) {
+  .rise {
+    animation: rise 400ms cubic-bezier(0.2, 0.7, 0.2, 1) var(--delay, 0ms) both;
+  }
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+  }
+}
+
 /* On main, not body: body's overflow is handed to the viewport, where iOS
    Safari still pans. */
 main {

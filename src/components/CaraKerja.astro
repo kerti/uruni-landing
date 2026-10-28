@@ -35,15 +35,17 @@ const steps = [
 
 <section id="cara-kerja" class="section" aria-labelledby="cara-kerja-title">
   <div class="container">
-    <p class="eyebrow">Cara kerja</p>
-    <h2 id="cara-kerja-title" class="section-title">
-      Kebiasaan kecil yang membuat kas tetap rapi.
-    </h2>
+    <div class="rise" data-reveal>
+      <p class="eyebrow">Cara kerja</p>
+      <h2 id="cara-kerja-title" class="section-title">
+        Kebiasaan kecil yang membuat kas tetap rapi.
+      </h2>
+    </div>
 
     <ol class="steps">
       {steps.map((s, i) => (
-        <li class="step">
-          <div class="text">
+        <li class="step" data-reveal>
+          <div class="text rise">
             <span class="num" aria-hidden="true">
               {i + 1}
             </span>
@@ -59,6 +61,7 @@ const steps = [
             sizes="(min-width: 26.5rem) 390px, calc(100vw - 2rem)"
             loading="lazy"
             decoding="async"
+            pictureAttributes={{ class: 'rise', style: '--delay: 100ms' }}
           />
         </li>
       ))}
