@@ -56,7 +56,7 @@ const steps = [
             alt={s.alt}
             formats={['avif', 'webp']}
             widths={[390, 780]}
-            sizes="(min-width: 25rem) 22rem, calc(100vw - 2rem)"
+            sizes="(min-width: 26.5rem) 390px, calc(100vw - 2rem)"
             loading="lazy"
             decoding="async"
           />
@@ -115,19 +115,24 @@ const steps = [
     font-size: 1.0625rem;
   }
 
-  /* The screenshot is the app on its own background, so a hairline and the
+  /* Shown at the 390px it was captured at, so a 1x screen draws it pixel for
+     pixel and a 2x screen gets the 780 file at exactly half; any other width
+     resamples small text into blur. Narrower viewports scale it down. The
+     hairline is a shadow ring, because a border would take 2px of the width.
+     The screenshot is the app on its own background, so the ring and the
      card shadow set it apart from the page. */
   .step :global(picture) {
     justify-self: center;
     width: 100%;
-    max-width: 22rem;
+    max-width: 390px;
   }
   .step :global(.shot) {
     display: block;
     width: 100%;
     height: auto;
-    border: 1px solid var(--border);
     border-radius: 1rem;
-    box-shadow: var(--shadow-card);
+    box-shadow:
+      0 0 0 1px var(--border),
+      var(--shadow-card);
   }
 </style>
