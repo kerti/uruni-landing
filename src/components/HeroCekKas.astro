@@ -24,7 +24,7 @@ import { rupiah } from '../lib/format';
 
 if (counted !== recorded) throw new Error('The hero shows a cek kas that is cocok');
 
-const label = `Uang tunai ${rupiah(accounts.tunai.counted)} dan saldo bank ${rupiah(accounts.bank.counted)}, jumlahnya ${rupiah(counted)}, cocok dengan catatan ${rupiah(recorded)}.`;
+const label = `Uang tunai yang dihitung ${rupiah(accounts.tunai.counted)} dan saldo bank ${rupiah(accounts.bank.counted)}, jumlahnya ${rupiah(counted)}, cocok dengan catatan ${rupiah(recorded)}.`;
 ---
 
 <figure class="cekkas" role="img" aria-label={label} data-reveal>
