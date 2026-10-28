@@ -4,10 +4,23 @@
 // [data-reveal] waits on its first frame until it scrolls into view. The head
 // script in Base.astro sets .motion and removes it again if this script never
 // reports in, so a failed script can't strand content.
+//
+// Nothing is revealed until the web font is in (or 2 s have passed): the hero
+// lays its pieces out by their text width, and a font swapping in mid-animation
+// moved them.
 ---
 
 <script>
-  const els = document.querySelectorAll('[data-reveal]');
+  (window as Window & { __revealReady?: boolean }).__revealReady = true;
+
+  const fontIn = document.fonts
+    .load('600 1em "Plus Jakarta Sans Variable"')
+    .then(() => document.fonts.ready);
+  const capped = new Promise((r) => setTimeout(r, 2000));
+  await Promise.race([fontIn, capped]).catch(() => {});
+  // One frame so layout has the font before the first animation frame.
+  await new Promise((r) => requestAnimationFrame(r));
+
   const io = new IntersectionObserver(
     (entries) => {
       for (const e of entries) {
@@ -20,6 +33,5 @@
     // Fire when the top is 12% above the viewport's bottom edge.
     { rootMargin: '0px 0px -12% 0px' },
   );
-  els.forEach((el) => io.observe(el));
-  (window as Window & { __revealReady?: boolean }).__revealReady = true;
+  document.querySelectorAll('[data-reveal]').forEach((el) => io.observe(el));
 </script>

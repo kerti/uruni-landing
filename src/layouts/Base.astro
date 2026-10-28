@@ -1,6 +1,9 @@
 ---
 import '../styles/global.css';
 import Reveal from '../components/Reveal.astro';
+// The Latin subset carries every word on the page; preloaded so the reveal
+// script's wait for it (Reveal.astro) is short.
+import fontLatin from '@fontsource-variable/plus-jakarta-sans/files/plus-jakarta-sans-latin-wght-normal.woff2?url';
 
 interface Props {
   title: string;
@@ -33,6 +36,7 @@ const { title, description } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     {description && <meta name="description" content={description} />}
+    <link rel="preload" href={fontLatin} as="font" type="font/woff2" crossorigin />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <!-- --background, as hex (a meta can't read a custom property). -->
