@@ -1,0 +1,25 @@
+---
+// Scroll-triggered reveals (landing guidelines section 8.3). Animations are
+// pure CSS and play on load by default; under html.motion, anything marked
+// [data-reveal] waits on its first frame until it scrolls into view. The head
+// script in Base.astro sets .motion and removes it again if this script never
+// reports in, so a failed script can't strand content.
+---
+
+<script>
+  const els = document.querySelectorAll('[data-reveal]');
+  const io = new IntersectionObserver(
+    (entries) => {
+      for (const e of entries) {
+        if (e.isIntersecting) {
+          e.target.classList.add('in-view');
+          io.unobserve(e.target);
+        }
+      }
+    },
+    // Fire when the top is 12% above the viewport's bottom edge.
+    { rootMargin: '0px 0px -12% 0px' },
+  );
+  els.forEach((el) => io.observe(el));
+  (window as Window & { __revealReady?: boolean }).__revealReady = true;
+</script>

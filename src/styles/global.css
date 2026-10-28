@@ -12,11 +12,46 @@ html {
   background-color: var(--background);
   color: var(--foreground);
   -webkit-text-size-adjust: 100%;
+  scroll-padding-top: var(--header-height);
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 body {
   margin: 0;
   line-height: 1.5;
+}
+
+/* Scroll-triggered reveals (components/Reveal.astro): under .motion, anything
+   marked [data-reveal] holds its animations on the first frame until it is in
+   view. Without .motion, animations play on load. */
+.motion [data-reveal]:not(.in-view),
+.motion [data-reveal]:not(.in-view) * {
+  animation-play-state: paused;
+}
+
+/* On main, not body: body's overflow is handed to the viewport, where iOS
+   Safari still pans. */
+main {
+  overflow-x: clip;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  line-height: 1.15;
+  text-wrap: balance;
+}
+
+p {
+  margin: 0;
+  text-wrap: pretty;
 }
 
 a {
@@ -26,4 +61,34 @@ a {
 :focus-visible {
   outline: 2px solid var(--ring);
   outline-offset: 2px;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--content-width);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Never wrap inside a figure or a short phrase. */
+.nowrap {
+  white-space: nowrap;
+}
+
+@media (min-width: 48rem) {
+  :root {
+    --gutter: 2rem;
+  }
 }

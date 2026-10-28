@@ -21,3 +21,6 @@ dist/
 # shared; per-machine approvals and attribution stay local.
 .claude/settings.local.json
 .claude/worktrees/
+
+# visual-check screenshots
+.visual/

@@ -17,8 +17,8 @@ _titipan_, _talangan_, _golongan_, _laporan publik_) and never coin a synonym.
 
 Uruni is a small, calm app for the accidental treasurer: the person who was asked to look after a
 small group's shared money and now keeps its dues, collections and spending. It records a
-transaction from a phone in seconds, keeps cash and bank apart, and checks that the records match
-the money actually held. A community runs Uruni on its own server; the project runs no service and
+transaction from a phone in seconds, keeps cash and bank apart, and, when the treasurer counts the
+cash and reads the bank balance, shows whether the records match or by how much they differ. A community runs Uruni on its own server; the project runs no service and
 holds no one's data. It is free and open source (AGPL-3.0).
 
 **Canonical paragraph in Indonesian** (meta description source, JSON-LD, the footer):
@@ -65,8 +65,8 @@ server.
 - **Headline (H1):** Catatan kas yang **selalu cocok** dengan uang yang ada.
   The accent is on _selalu cocok_. It is the app's emotional core (_Tenang, karena catatan selalu
   cocok dengan uang yang ada_) without the _tenang_, which the page should earn rather than claim.
-- **Subhead:** Catat uang masuk dan keluar dari ponsel. Uruni lalu memeriksa apakah catatan itu sama
-  dengan uang tunai di dompet dan saldo di rekening, dan menunjukkan selisihnya kalau ada.
+- **Subhead:** Catat uang masuk dan keluar dari ponsel. Saat cek kas, kamu menghitung uang tunai dan
+  melihat saldo rekening; Uruni membandingkannya dengan catatan dan menunjukkan selisihnya kalau ada.
 
 **Value bullets:**
 
@@ -111,6 +111,10 @@ participation, the fund's time zone.
 **Never** (non-goals, or false): reminders or payment chasing, member accounts or logins, bank sync,
 QRIS, accounting journals, analytics dashboards, offline use, several treasurers, a hosted version,
 an app-store install, multi-currency.
+
+**Who checks the money:** Uruni never looks at the money itself. The treasurer counts the cash and
+reads the bank balance; Uruni compares those figures with the records and shows the _selisih_. Never
+write Uruni as the subject of _memeriksa_, _menghitung_ or _mengecek_ the money.
 
 ## 7. Audience and voice
 
@@ -190,7 +194,10 @@ wording is drafted with each slice.
    sendiri_, GitHub icon. No theme toggle (ADR-0008).
 2. **Hero:** eyebrow, H1, subhead, both CTAs, caveat, fact chips, and an illustration that sells
    _cocok_: the counted cash and the bank balance adding up to the recorded balance, with the
-   _Cocok_ state from the app. Not a screenshot.
+   _Cocok_ state from the app. Not a screenshot. 2026-10-28: the illustration opens as the brand's
+   vessel (the two account cards, one after the other, each drawing its stream into it); then the
+   cards' icon, name and amount travel into the tally's first two rows. Once, about 3.3 s, when it
+   scrolls into view; reduced motion shows the tally straight away.
 3. **Cara kerja** (`#cara-kerja`): three steps, alternating with demo screenshots: _Catat_, _Cek
    kas_, _Bagikan laporan_.
 4. **Kenapa** (`#cek-kas`): the insight from the validated treasurer. The hard part is not chasing

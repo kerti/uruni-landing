@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import Reveal from '../components/Reveal.astro';
 
 interface Props {
   title: string;
@@ -13,6 +14,22 @@ const { title, description } = Astro.props;
 <html lang="id">
   <head>
     <meta charset="utf-8" />
+    <!-- Motion only with IntersectionObserver and no reduced-motion preference;
+         dropped again if the reveal script hasn't reported in after 2.5 s. -->
+    <script is:inline>
+      (function () {
+        const root = document.documentElement;
+        if (
+          'IntersectionObserver' in window &&
+          window.matchMedia('(prefers-reduced-motion: no-preference)').matches
+        ) {
+          root.classList.add('motion');
+          setTimeout(function () {
+            if (!window.__revealReady) root.classList.remove('motion');
+          }, 2500);
+        }
+      })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     {description && <meta name="description" content={description} />}
@@ -24,5 +41,6 @@ const { title, description } = Astro.props;
   </head>
   <body>
     <slot />
+    <Reveal />
   </body>
 </html>
