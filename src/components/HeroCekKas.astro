@@ -5,6 +5,7 @@
 // into the brand's U, which pools contributions) plays first and hands over to
 // the tally (what was counted, added up, beside what the records say, then the
 // Cocok state). It plays once on load, about 2.8 s, and rests on the tally.
+// The two accounts arrive one after the other, each drawing its stream in.
 //
 // Pure CSS, no script. The tally is the resting state: without motion
 // (prefers-reduced-motion) the vessel never shows and the tally is simply
@@ -23,8 +24,19 @@ const label = `Uang tunai ${rupiah(accounts.tunai.counted)} dan saldo bank ${rup
 <figure class="cekkas" role="img" aria-label={label} data-reveal>
   <div class="vessel" aria-hidden="true">
     <svg viewBox="0 0 440 360">
-      <path class="stream" d="M90 112 C 90 190, 170 170, 196 236"></path>
-      <path class="stream" d="M350 112 C 350 190, 270 170, 244 236"></path>
+      <!-- Each stream is dotted; a solid copy in a mask draws it on. -->
+      <mask id="cekkas-draw-l" maskUnits="userSpaceOnUse" x="0" y="0" width="440" height="360">
+        <path class="draw draw-l" pathLength="1" d="M90 112 C 90 190, 170 170, 196 236"></path>
+      </mask>
+      <mask id="cekkas-draw-r" maskUnits="userSpaceOnUse" x="0" y="0" width="440" height="360">
+        <path class="draw draw-r" pathLength="1" d="M350 112 C 350 190, 270 170, 244 236"></path>
+      </mask>
+      <path class="stream" mask="url(#cekkas-draw-l)" d="M90 112 C 90 190, 170 170, 196 236"></path>
+      <path
+        class="stream"
+        mask="url(#cekkas-draw-r)"
+        d="M350 112 C 350 190, 270 170, 244 236"
+      ></path>
 
       <g transform="translate(30 20)">
         <g class="tag tag-l">
@@ -145,6 +157,11 @@ const label = `Uang tunai ${rupiah(accounts.tunai.counted)} dan saldo bank ${rup
     stroke-linecap: round;
     stroke-dasharray: 2 9;
   }
+  .draw {
+    fill: none;
+    stroke: #fff;
+    stroke-width: 8;
+  }
   .tag-bg {
     fill: var(--card);
     filter: drop-shadow(0 4px 12px rgba(34, 50, 58, 0.08));
@@ -241,9 +258,11 @@ const label = `Uang tunai ${rupiah(accounts.tunai.counted)} dan saldo bank ${rup
       --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
     }
 
+    /* One account, its stream, then the other: each stream draws on from
+       its account toward the vessel, and its dots keep flowing in. */
     .vessel {
       display: block;
-      animation: vessel-out 400ms var(--ease) 1450ms both;
+      animation: vessel-out 400ms var(--ease) 1750ms both;
     }
     .tag,
     .mark {
@@ -254,27 +273,32 @@ const label = `Uang tunai ${rupiah(accounts.tunai.counted)} dan saldo bank ${rup
       animation: tag-in 400ms var(--ease) both;
     }
     .tag-r {
-      animation-delay: 120ms;
+      animation-delay: 450ms;
+    }
+    .draw {
+      stroke-dasharray: 1 2;
+      animation: stream-draw 500ms ease-in-out 300ms both;
+    }
+    .draw-r {
+      animation-delay: 750ms;
     }
     .stream {
-      animation:
-        stream-in 300ms ease-out 350ms both,
-        stream-flow 1400ms linear 350ms both;
+      animation: stream-flow 2200ms linear both;
     }
     .mark {
-      animation: mark-fill 500ms var(--ease) 1000ms both;
+      animation: mark-fill 500ms var(--ease) 1250ms both;
     }
 
     .tally {
-      animation: tally-in 400ms var(--ease) 1550ms both;
+      animation: tally-in 400ms var(--ease) 1850ms both;
     }
     .row {
       animation: row-in 350ms var(--ease) both;
-      animation-delay: calc(1600ms + var(--i) * 110ms);
+      animation-delay: calc(1900ms + var(--i) * 110ms);
     }
     .state {
       transform-origin: left center;
-      animation: state-in 300ms var(--ease) 2200ms both;
+      animation: state-in 300ms var(--ease) 2500ms both;
     }
 
     @keyframes tag-in {
@@ -283,15 +307,18 @@ const label = `Uang tunai ${rupiah(accounts.tunai.counted)} dan saldo bank ${rup
         transform: translateY(-8px);
       }
     }
-    @keyframes stream-in {
+    @keyframes stream-draw {
       from {
-        opacity: 0;
+        stroke-dashoffset: 1;
+      }
+      to {
+        stroke-dashoffset: 0;
       }
     }
     /* The dots move toward the vessel: the money flowing in. */
     @keyframes stream-flow {
       to {
-        stroke-dashoffset: -44;
+        stroke-dashoffset: -77;
       }
     }
     @keyframes mark-fill {
