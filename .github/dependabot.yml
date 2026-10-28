@@ -1,0 +1,23 @@
+version: 2
+
+# Dependency-update PRs and security alerts. Two ecosystems: npm (the Astro
+# site, once scaffolded) and the GitHub Actions pinned in the workflows.
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    labels: [dependencies]
+    groups:
+      # Tooling churn (astro, eslint, prettier, types) arrives as one PR so it
+      # doesn't bury a runtime bump.
+      dev-dependencies:
+        dependency-type: development
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    labels: [dependencies]

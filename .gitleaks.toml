@@ -1,0 +1,17 @@
+# gitleaks config. Extends the built-in ruleset. GitHub's native secret scanning
+# and push protection are the first line of defence on this public repo
+# (ADR-0003); gitleaks adds full-history scans and generic entropy rules, and
+# keeps working if the repo ever goes private.
+#
+# A static site (ADR-0001) has no secrets of its own, so the allowlist is empty
+# apart from the env template. Add a scoped path rule only if a genuine
+# placeholder credential ever needs to live in the tree.
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "No committed secrets or fixture credentials in this repo"
+paths = [
+  '''\.env\.example$''',
+]
