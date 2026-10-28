@@ -16,7 +16,8 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "check": "npm run lint && npm run format:check && npm run astro:check && npm run build",
-    "prepare": "git rev-parse --git-dir > /dev/null 2>&1 && sh scripts/hooks-install.sh || true"
+    "prepare": "git rev-parse --git-dir > /dev/null 2>&1 && sh scripts/hooks-install.sh || true",
+    "visual": "node scripts/visual-check.mjs"
   },
   "dependencies": {
     "@fontsource-variable/plus-jakarta-sans": "^5.3.0",
@@ -31,6 +32,7 @@
     "globals": "^17.13.0",
     "prettier": "^3.9.10",
     "prettier-plugin-astro": "^1.1.2",
+    "puppeteer-core": "^25.16.0",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.72.1"
   }
