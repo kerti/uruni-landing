@@ -9,8 +9,8 @@ before any page section is built.
 
 This file is narrower than the app's [`CONTEXT.md`](https://github.com/kerti/uruni/blob/main/CONTEXT.md),
 which owns the domain vocabulary. Copy here stays at value-proposition altitude. When a precise
-domain term is needed, borrow the app's word (*kas*, *cek kas*, *cocok*, *selisih*, *amplop*,
-*titipan*, *talangan*, *golongan*, *laporan publik*) and never coin a synonym.
+domain term is needed, borrow the app's word (_kas_, _cek kas_, _cocok_, _selisih_, _amplop_,
+_titipan_, _talangan_, _golongan_, _laporan publik_) and never coin a synonym.
 
 ## 2. What Uruni is
 
@@ -30,10 +30,10 @@ server.
 - In running text the product is **Uruni**: capital U, the rest lowercase.
 - The wordmark is deliberately lowercase (**uruni**). That spelling appears only as the logo, never
   in text, headings, titles or metadata.
-- The name is never inflected. No affix or particle attaches to it: *di Uruni* (preposition, a
-  separate word), never *Uruni-mu*, *meng-Uruni-kan*, *Uruninya*.
-- **Uruni** is the product; **urunan** and *urun* are the common words for pooling money. The law
-  sentence: *"Setiap bulan anggota urunan; Uruni mencatat semuanya."*
+- The name is never inflected. No affix or particle attaches to it: _di Uruni_ (preposition, a
+  separate word), never _Uruni-mu_, _meng-Uruni-kan_, _Uruninya_.
+- **Uruni** is the product; **urunan** and _urun_ are the common words for pooling money. The law
+  sentence: _"Setiap bulan anggota urunan; Uruni mencatat semuanya."_
 - Forbidden: `URUNI`, `uruni` in running text, `UruNi`, using Uruni as a verb.
 
 ## 4. Brand assets and source of truth
@@ -59,31 +59,31 @@ page. No version numbers, no "alpha" or "beta" badge, no roadmap promises.
 - **Audience:** the accidental treasurer of a group of roughly 5 to 20 people (office units, RT,
   churches, choirs, alumni, family clans, hobby groups), and the technical helper who will set up
   the server.
-- **Voice:** calm, warm, precise, a little opinionated; the app's *tenang*. No hype, no urgency, no
+- **Voice:** calm, warm, precise, a little opinionated; the app's _tenang_. No hype, no urgency, no
   fake scarcity, no testimonial theatre.
 - **Address:** impersonal where possible, as in the app; **kamu** where a pronoun is needed. Never
-  *Anda*, never mixed.
-- **Language:** Indonesian only (ADR-0009), following EYD V and KBBI. Mind *di* as prefix versus
-  preposition (*disimpan*, *di rumah*).
-- **Loanwords:** _Pending: copy spine._ Per-term list (for example *sumber terbuka* or *open
-  source*, *unduh* or *download*).
+  _Anda_, never mixed.
+- **Language:** Indonesian only (ADR-0009), following EYD V and KBBI. Mind _di_ as prefix versus
+  preposition (_disimpan_, _di rumah_).
+- **Loanwords:** _Pending: copy spine._ Per-term list (for example _sumber terbuka_ or _open
+  source_, _unduh_ or _download_).
 
 ### Anti-slop rules
 
 - No em dashes in visible copy or metadata.
 - Few "X, not Y" contrasts, never in more than one heading.
 - Be wary of three-item lists and three cards in a row.
-- No stock closers. No *Tak hanya X, tetapi juga Y*; no *solusi terbaik / terlengkap / nomor satu*;
-  no *Yuk, ...!* openers or exclamation marks; no *Mudah, cepat, dan aman* triplets; no repeated
-  *Dengan Uruni, kamu bisa ...* frames; no English marketing calques (*level up*, *game changer*);
-  no *Buruan!* or *Terbatas!*.
+- No stock closers. No _Tak hanya X, tetapi juga Y_; no _solusi terbaik / terlengkap / nomor satu_;
+  no _Yuk, ...!_ openers or exclamation marks; no _Mudah, cepat, dan aman_ triplets; no repeated
+  _Dengan Uruni, kamu bisa ..._ frames; no English marketing calques (_level up_, _game changer_);
+  no _Buruan!_ or _Terbatas!_.
 - Don't repeat in prose what a chip or list beside it already says.
 - Curly quotes and apostrophes everywhere.
 - A two-tone heading highlights only the hook.
 
 ### Formatting
 
-`Rp1.250.000`, *Rp1,2 juta*; `12,5%`; *28 Oktober 2026*; `14.30 WIB`. Numbers and dates from data
+`Rp1.250.000`, _Rp1,2 juta_; `12,5%`; _28 Oktober 2026_; `14.30 WIB`. Numbers and dates from data
 are formatted with `Intl` in `id-ID` at build time. Non-breaking space between a number and its unit
 where a break reads badly.
 

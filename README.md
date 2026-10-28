@@ -13,15 +13,17 @@ written in Bahasa Indonesia.
 
 ## Status
 
-Pre-launch: repository hygiene only. No site yet. It will live at `https://uruni.kerti.dev`.
+Pre-launch: Astro toolchain and a placeholder page. No content yet. It will live at `https://uruni.kerti.dev`.
 
 ## Local development
 
-Arrives with the Astro scaffold (Phase B). Until then:
+Prerequisites: Node 24 (pinned in `.nvmrc`), and `brew install gitleaks jq` for the local hooks.
 
 ```sh
-brew install gitleaks
-sh scripts/hooks-install.sh
+npm install        # the "prepare" script also installs the git hooks
+npm run dev        # http://localhost:4321
+npm run build      # static build to dist/ (what Cloudflare Pages serves)
+npm run check      # the local mirror of CI: lint, format:check, astro check, build
 ```
 
 ## Hosting
