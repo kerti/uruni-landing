@@ -1,0 +1,101 @@
+---
+// Yang dicatat: the four shapes a small group's money takes besides plain in
+// and out. Copy approved 2026-10-28; each card is on CONTEXT.md's claims list
+// (dues by golongan with who hasn't paid, amplop and its leftover, talangan
+// with an optional receipt, titipan). Never a group's private names as
+// examples (CONTEXT.md section 1).
+import Icon from './Icon.astro';
+
+const cards = [
+  {
+    icon: 'users',
+    title: 'Iuran per golongan',
+    body: 'Besar iuran bisa berbeda per golongan anggota, dan Uruni menunjukkan siapa yang belum\u00a0membayar.',
+  },
+  {
+    icon: 'mail',
+    title: 'Amplop',
+    body: 'Untuk acara seperti jenguk atau kelahiran, sumbangan dan pengeluarannya dicatat di amplop sendiri. Sisanya masuk ke Kas Utama saat amplop ditutup.',
+  },
+  {
+    icon: 'receipt',
+    title: 'Talangan',
+    body: 'Anggota yang memakai uangnya sendiri lebih dulu tetap tercatat, dengan foto nota kalau ada, sampai diganti dari kas.',
+  },
+  {
+    icon: 'arrowRightLeft',
+    title: 'Titipan',
+    body: 'Uang yang dikumpulkan untuk diteruskan ke pihak lain dicatat terpisah, karena bukan milik kas ini.',
+  },
+] as const;
+---
+
+<section class="section" aria-labelledby="yang-dicatat-title">
+  <div class="container">
+    <div class="rise" data-reveal>
+      <p class="eyebrow">Yang dicatat</p>
+      <h2 id="yang-dicatat-title" class="section-title">
+        Kas kelompok jarang sesederhana masuk dan keluar.
+      </h2>
+    </div>
+
+    <div data-reveal>
+      <ul class="cards rise" style="--delay: 100ms">
+        {cards.map((c) => (
+          <li class="card">
+            <span class="ico">
+              <Icon name={c.icon} size={22} />
+            </span>
+            <h3>{c.title}</h3>
+            <p>{c.body}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Four cards: one column, then two by two, then four in a row. */
+  .cards {
+    display: grid;
+    gap: 1rem;
+    margin: clamp(2rem, 5vw, 3rem) 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  @media (min-width: 36rem) {
+    .cards {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (min-width: 64rem) {
+    .cards {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  .card {
+    padding: 1.5rem;
+    border-radius: 1rem;
+    background-color: var(--card);
+    box-shadow: var(--shadow-card);
+  }
+  .ico {
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    margin-bottom: 1rem;
+    border-radius: 0.75rem;
+    background-color: var(--secondary);
+    color: var(--secondary-foreground);
+  }
+  h3 {
+    font-size: 1.1875rem;
+    font-weight: 700;
+  }
+  .card p {
+    margin-top: 0.5rem;
+    color: var(--muted-foreground);
+  }
+</style>
