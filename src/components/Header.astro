@@ -62,13 +62,30 @@ const sections: { id: string; label: string }[] = [
     transform: none;
   }
 
+  /* The app's header glass (web/src/index.css, header-glass, as of app commit
+     5ee9fd4): the page's cream at 60% over a blurred, slightly saturated
+     backdrop, so content scrolling beneath tints the bar instead of vanishing,
+     a bright 1px rim just inside the hairline, and a soft lift downward. */
   .site-header {
     position: sticky;
     top: 0;
     z-index: 50;
     height: var(--header-height);
-    background-color: var(--background);
     border-bottom: 1px solid var(--border);
+    background-color: color-mix(in srgb, var(--background) 60%, transparent);
+    -webkit-backdrop-filter: blur(20px) saturate(1.6);
+    backdrop-filter: blur(20px) saturate(1.6);
+    box-shadow:
+      inset 0 -1px 0 rgb(255 255 255 / 0.85),
+      inset 0 -10px 14px -10px rgb(255 255 255 / 0.7),
+      0 4px 16px rgb(34 50 58 / 0.08);
+  }
+  /* Without a backdrop filter, 60% cream would let the page show through
+     unblurred: stay solid. */
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .site-header {
+      background-color: var(--background);
+    }
   }
 
   .bar {
