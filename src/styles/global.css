@@ -98,7 +98,7 @@ a {
   border: 0;
 }
 
-/* A section's opening: the eyebrow (with an optional .dot) and its h2. */
+/* A section's opening: the eyebrow, led by the accent dot, and its h2. */
 .eyebrow {
   display: flex;
   align-items: center;
@@ -108,7 +108,9 @@ a {
   font-size: 0.9375rem;
   font-weight: 600;
 }
-.dot {
+.eyebrow::before {
+  content: '';
+  flex: none;
   width: 0.625rem;
   height: 0.625rem;
   border-radius: 999px;

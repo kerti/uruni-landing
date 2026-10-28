@@ -47,7 +47,7 @@ const steps = [
         <li class="step" data-reveal>
           <div class="text rise">
             <span class="num" aria-hidden="true">
-              {i + 1}
+              {String(i + 1).padStart(2, '0')}
             </span>
             <h3>{s.title}</h3>
             <p set:html={s.body} />
@@ -97,15 +97,14 @@ const steps = [
     max-width: 30rem;
   }
   .num {
-    display: grid;
-    place-items: center;
-    width: 2.25rem;
-    height: 2.25rem;
-    margin-bottom: 1rem;
-    border-radius: 999px;
-    background-color: var(--secondary);
-    color: var(--secondary-foreground);
-    font-weight: 700;
+    display: block;
+    margin-bottom: 0.75rem;
+    color: var(--primary);
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    font-variant-numeric: tabular-nums;
   }
   h3 {
     font-size: clamp(1.375rem, 1.2rem + 0.8vw, 1.75rem);
