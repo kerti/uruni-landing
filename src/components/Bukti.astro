@@ -1,0 +1,80 @@
+---
+// Bukti: the public report members open, shown from the demo. Copy approved
+// 2026-10-28. The screenshot is the report at the link Pengaturan shares,
+// taken by scripts/demo-shots.mjs; the report uses the system font, so it
+// looks plainer than the app on purpose.
+import { Picture } from 'astro:assets';
+import laporanPublik from '../assets/demo/laporan-publik.png';
+import { recorded } from '../data/fund';
+import { rupiah } from '../lib/format';
+
+const alt = `Laporan kas publik CS Shift Sore di ponsel: saldo kas ${rupiah(recorded)}, tanda Kas dan catatan sudah cocok, dan saldo per pos.`;
+---
+
+<section id="laporan" class="section" aria-labelledby="laporan-title">
+  <div class="container grid">
+    <div class="rise" data-reveal>
+      <p class="eyebrow">Laporan untuk anggota</p>
+      <h2 id="laporan-title" class="section-title">
+        Semua anggota bisa melihat ke mana uangnya pergi.
+      </h2>
+      <p class="body">
+        Laporan publik menampilkan saldo kas, saldo per pos, dan daftar transaksinya. Anggota cukup
+        membuka tautannya, tanpa <span lang="en">login</span>; tidak ada yang bisa mengubah catatan
+        dari sana.
+      </p>
+    </div>
+
+    <div data-reveal>
+      <Picture
+        class="shot"
+        src={laporanPublik}
+        alt={alt}
+        formats={['avif', 'webp']}
+        widths={[390, 780]}
+        sizes="(min-width: 26.5rem) 390px, calc(100vw - 2rem)"
+        loading="lazy"
+        decoding="async"
+        pictureAttributes={{ class: 'rise', style: '--delay: 100ms' }}
+      />
+    </div>
+  </div>
+</section>
+
+<style>
+  .grid {
+    display: grid;
+    gap: 3rem;
+    align-items: center;
+  }
+  @media (min-width: 64rem) {
+    .grid {
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 4rem;
+    }
+  }
+
+  .body {
+    max-width: 36rem;
+    margin-top: 1.5rem;
+    color: var(--muted-foreground);
+    font-size: 1.0625rem;
+  }
+
+  /* As in Cara kerja: shown at its captured 390px, with a shadow ring. */
+  .grid :global(picture) {
+    display: block;
+    justify-self: center;
+    width: 100%;
+    max-width: 390px;
+  }
+  .grid :global(.shot) {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 1rem;
+    box-shadow:
+      0 0 0 1px var(--border),
+      var(--shadow-card);
+  }
+</style>
