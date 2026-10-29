@@ -12,13 +12,16 @@ import ServerSendiri from '../components/ServerSendiri.astro';
 import TanyaJawab from '../components/TanyaJawab.astro';
 import Penutup from '../components/Penutup.astro';
 import Footer from '../components/Footer.astro';
+import Backdrop from '../components/Backdrop.astro';
 ---
 
 <Base title="Uruni">
   <meta slot="head" name="robots" content="noindex" />
   <Header />
   <main id="content">
-    <Hero />
+    <Backdrop at="top">
+      <Hero />
+    </Backdrop>
     <CaraKerja />
     <Kenapa />
     <YangBukan />
@@ -27,7 +30,9 @@ import Footer from '../components/Footer.astro';
     <CatatanPendiri />
     <ServerSendiri />
     <TanyaJawab />
-    <Penutup />
+    <Backdrop at="bottom">
+      <Penutup />
+    </Backdrop>
   </main>
   <Footer />
 </Base>

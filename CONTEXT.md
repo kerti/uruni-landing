@@ -64,6 +64,10 @@ server.
 - **Owned by the landing:** the share image, and compositional tokens built from the app's
   (header height, section padding, tints), kept in a separate block of the token file.
 - 2026-10-28: light theme only, because the app has no dark palette yet (ADR-0008).
+- 2026-10-29: the backdrop is the logomark's dot dropped into water: faint Sage ripples behind the
+  hero and the closing section, waves under the close, and two rings around each eyebrow dot. Drawn
+  once as it scrolls in, then still. No charts or graphs: the app is deliberately not fintech
+  (Design-System.md, principle 5).
 
 ## 5. Value proposition
 
