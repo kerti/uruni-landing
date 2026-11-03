@@ -9,9 +9,10 @@
 // the eyebrow, the H1 and the tally; hides what is unreadable at share size
 // or not a claim (the nav, the lede, the buttons and caveat, the chips) and
 // every later section. The ripple is recentred over the tally and the
-// closing section's waves run along the foot. Rerun after any change to the hero, and check the
-// result at about 600x315. The GitHub repository's social preview has no
-// API: upload the new file by hand (Settings, General, Social preview).
+// closing section's waves run along the foot. Rerun after any change to the
+// hero, and check the result at about 600x315. The GitHub repository's social
+// preview has no API: upload the new file by hand (Settings, General, Social
+// preview).
 import { existsSync, statSync } from 'node:fs';
 import puppeteer from 'puppeteer-core';
 import { serveDist } from './lib/serve-dist.mjs';
