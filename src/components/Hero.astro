@@ -3,6 +3,12 @@
 // caveat are Ctas, which the closing section repeats word for word.
 import Ctas from './Ctas.astro';
 import HeroCekKas from './HeroCekKas.astro';
+import { HEADLINE } from '../data/copy';
+
+// The H1 is the page title too; only the hook takes the accent.
+const HOOK = 'selalu cocok';
+const [before, after] = HEADLINE.split(HOOK);
+if (after === undefined) throw new Error(`The headline lost its hook, "${HOOK}"`);
 
 const chips = ['Gratis selamanya', 'Sumber terbuka', 'Di server sendiri', 'Berbahasa Indonesia'];
 ---
@@ -12,7 +18,9 @@ const chips = ['Gratis selamanya', 'Sumber terbuka', 'Di server sendiri', 'Berba
     <div class="copy">
       <p class="eyebrow">Untuk bendahara kas kelompok kecil</p>
       <h1 id="hero-title">
-        Catatan kas yang <span class="accent">selalu cocok</span> dengan uang yang ada.
+        {before}
+        <span class="accent">{HOOK}</span>
+        {after}.
       </h1>
       <p class="lede">
         Catat uang masuk dan keluar dari ponsel. Saat cek kas, kamu menghitung uang tunai dan
