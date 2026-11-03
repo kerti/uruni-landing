@@ -68,7 +68,7 @@ server.
   and `docs/Design-System.md`), and the font (Plus Jakarta Sans via `@fontsource-variable`).
 - **Owned by the landing:** the share image, and compositional tokens built from the app's
   (header height, section padding, tints), kept in a separate block of the token file.
-- 2026-11-03: the share image (`public/og.png`, 2560x1280) is a still of the hero taken from the
+- 2026-11-03: the share image (`public/og.png`, 2400x1260, the 1.91:1 previews expect) is a still of the hero taken from the
   built page by `npm run og` (`scripts/og-image.mjs`): wordmark, eyebrow, H1 and the resting tally.
   Rerun it after any change to the hero; re-upload it by hand as the GitHub repository's social
   preview.

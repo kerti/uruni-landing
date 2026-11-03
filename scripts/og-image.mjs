@@ -3,21 +3,21 @@
 //
 //   npm run build && npm run og
 //
-// Loads dist/ at 1280x640 (rendered at 2x, so 2560x1280, 2:1 for
-// summary_large_image) with reduced motion, so the hero drawing shows its
-// resting tally. Keeps the wordmark, the eyebrow, the H1 and the tally; hides
-// what is unreadable at share size or not a claim (the nav, the lede, the
-// buttons and caveat, the chips) and every later section. Rerun after any
-// change to the hero, and check the result at about 600x300. The GitHub
-// repository's social preview has no API: upload the new file by hand
-// (Settings, General, Social preview).
+// Loads dist/ at 1200x630, rendered at 2x (2400x1260: the 1.91:1 that Open
+// Graph and summary_large_image expect, so nothing is cropped), with reduced
+// motion, so the hero drawing shows its resting tally. Keeps the wordmark,
+// the eyebrow, the H1 and the tally; hides what is unreadable at share size
+// or not a claim (the nav, the lede, the buttons and caveat, the chips) and
+// every later section. Rerun after any change to the hero, and check the
+// result at about 600x315. The GitHub repository's social preview has no
+// API: upload the new file by hand (Settings, General, Social preview).
 import { existsSync, statSync } from 'node:fs';
 import puppeteer from 'puppeteer-core';
 import { serveDist } from './lib/serve-dist.mjs';
 
 const OUT = 'public/og.png';
-const W = 1280;
-const H = 640;
+const W = 1200;
+const H = 630;
 
 const chromePath =
   process.env.CHROME_PATH ??
@@ -39,6 +39,8 @@ const CARD = `
   .hero .lede, .hero .ctas, .hero .caveat, .hero .chips,
   main > :not(:first-child), footer { display: none !important; }
   .site-header { position: static; }
+  /* Room at the sides: some previews round or trim the card's corners. */
+  .site-header .container, .hero .container { padding-inline: 4.5rem !important; }
   html, body { height: ${H}px; overflow: hidden; }
   .hero {
     box-sizing: border-box;
@@ -47,9 +49,9 @@ const CARD = `
     display: grid;
     align-items: center;
   }
-  .hero .grid { grid-template-columns: 1fr 24rem !important; gap: 5rem !important; }
+  .hero .grid { grid-template-columns: 1fr 24rem !important; gap: 4rem !important; }
   .hero h1 { font-size: 4.25rem !important; text-wrap: balance; }
-  .hero .cekkas { transform: scale(1.15); transform-origin: center; }
+  .hero .cekkas { transform: scale(1.1); transform-origin: center; }
 `;
 
 const server = await serveDist('og-image');
