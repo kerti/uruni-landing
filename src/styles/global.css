@@ -112,7 +112,8 @@ a {
   gap: 1.125rem;
   margin-bottom: 1rem;
   color: var(--primary);
-  font-size: 0.9375rem;
+  /* The app's SectionLabel: text-base semibold Forest. */
+  font-size: 1rem;
   font-weight: 600;
 }
 .eyebrow::before {

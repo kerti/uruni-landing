@@ -36,6 +36,26 @@ if (!chromePath) {
 // version number, and the bottom navigation isn't part of any shot.
 const APP_CHROME = 'body > div header, nav { display: none !important; }';
 
+// Open the select whose trigger reads `placeholder` and choose `option`.
+async function pick(page, placeholder, option) {
+  const trigger = await page.waitForSelector(
+    `::-p-xpath(//main//button[@role="combobox"][normalize-space(.)="${placeholder}"])`,
+  );
+  await trigger.click();
+  const item = await page.waitForSelector(
+    `::-p-xpath(//*[@role="option"][normalize-space(.)="${option}"])`,
+  );
+  await item.click();
+  await page.waitForFunction(
+    (p) =>
+      ![...document.querySelectorAll('main [role="combobox"]')].some(
+        (b) => b.textContent.trim() === p,
+      ),
+    {},
+    placeholder,
+  );
+}
+
 // Each shot: the screen (a path, or a function that finds one), what to do on
 // it, what to hide, and the crop, from the element whose text matches `from`
 // down to the one whose text matches `to` (or the button, link or list row
@@ -46,10 +66,17 @@ const SHOTS = [
     path: '/record',
     async fill(page) {
       await page.type('main input[inputmode="numeric"]', '75000');
+      // Lokasi and Pos start blank (app #789); pick them the way the copy
+      // describes the entry.
+      await pick(page, 'Pilih lokasi', accounts.tunai.name);
+      await pick(page, 'Pilih pos', 'Kas Utama');
+      // The select hands focus back to its trigger after closing; let it land
+      // before the note takes focus, or the trigger keeps its ring.
+      await new Promise((r) => setTimeout(r, 300));
       await page.type('main textarea', 'Snack rapat bulanan');
     },
     hide: APP_CHROME,
-    from: /^Catat transaksi$/,
+    from: /^Catat pengeluaran$/,
     to: /^Simpan$/,
   },
   {

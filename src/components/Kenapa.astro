@@ -57,7 +57,7 @@ const label = `Cek kas: uang tunai yang dihitung ${rupiah(selisihCheck.tunai.cou
             <span class="amt">{rupiah(selisihCheck.tunai.counted)}</span>
           </div>
           <p class="status ok">
-            <Icon name="circleCheck" size={20} /> Cocok
+            <Icon name="checkCircle" size={20} /> Cocok
           </p>
         </div>
         <div class="loc" aria-hidden="true">
@@ -72,7 +72,7 @@ const label = `Cek kas: uang tunai yang dihitung ${rupiah(selisihCheck.tunai.cou
             <span class="amt">{rupiah(selisihCheck.bank.counted)}</span>
           </div>
           <p class="status gap">
-            <Icon name="triangleAlert" size={20} />
+            <Icon name="magnifyingGlass" size={20} />
             <span>
               Ada selisih <span class="nowrap">{rupiah(gap)}</span>
               <small>Mau dicek bareng?</small>
@@ -119,9 +119,9 @@ const label = `Cek kas: uang tunai yang dihitung ${rupiah(selisihCheck.tunai.cou
   .loc {
     container-type: inline-size;
     overflow: hidden;
-    border-radius: 1rem;
+    border-radius: var(--radius);
     background-color: var(--card);
-    box-shadow: var(--shadow-card);
+    box-shadow: var(--shadow-card), var(--ring-card);
   }
   .head {
     display: flex;
@@ -133,7 +133,7 @@ const label = `Cek kas: uang tunai yang dihitung ${rupiah(selisihCheck.tunai.cou
     background-color: var(--muted);
   }
   /* Narrow, both heads stack, rather than only the one whose name is long. */
-  @container (max-width: 22rem) {
+  @container (max-width: 23rem) {
     .head {
       flex-direction: column;
     }
@@ -171,7 +171,7 @@ const label = `Cek kas: uang tunai yang dihitung ${rupiah(selisihCheck.tunai.cou
     gap: 0.5rem;
     margin: 0.75rem 1rem 1rem;
     padding: 0.625rem 0.75rem;
-    border-radius: 0.75rem;
+    border-radius: var(--radius);
     font-weight: 600;
   }
   .status :global(svg) {
