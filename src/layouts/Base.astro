@@ -1,4 +1,6 @@
 ---
+import { createHash } from 'node:crypto';
+import { readFileSync } from 'node:fs';
 import '../styles/global.css';
 import Reveal from '../components/Reveal.astro';
 // The Latin subset carries every word on the page; preloaded so the reveal
@@ -19,8 +21,14 @@ const { title, description } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 // The share card: a still of the hero, made by scripts/og-image.mjs
 // (npm run og) from the built page, so it can't drift from it.
+// The image URL carries a hash of the file, so link-preview caches (Facebook,
+// WhatsApp, Slack, opengraph.xyz) fetch a new card whenever it changes.
+const ogVersion = createHash('sha256')
+  .update(readFileSync('public/og.png'))
+  .digest('hex')
+  .slice(0, 8);
 const og = {
-  image: new URL('/og.png', Astro.site).href,
+  image: new URL(`/og.png?v=${ogVersion}`, Astro.site).href,
   width: 2400,
   height: 1260,
   alt: `Uruni. ${HEADLINE}. Uang tunai dan saldo bank yang dihitung, jumlahnya cocok dengan catatan.`,
