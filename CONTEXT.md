@@ -39,6 +39,11 @@ holds no one's data. It is free and open source (AGPL-3.0).
 > Aplikasi kas untuk bendahara kelompok kecil: catat dari ponsel, cek kas tunai dan bank, bagikan
 > laporan. Di server sendiri, gratis, sumber terbuka.
 
+**Share description** (Open Graph and Twitter, under 125 characters; approved 2026-11-03):
+
+> Catat kas dari ponsel, cek kas tunai dan bank, bagikan laporan. Di server sendiri, gratis, sumber
+> terbuka.
+
 Deliberate non-features, stated as positioning: Uruni is not an operating system for an RT or an
 organisation, not a payment-chasing or reminder machine, not accounting software, and does not
 connect to banks or QRIS. It is not a tap-to-install consumer app: a technical helper sets up the

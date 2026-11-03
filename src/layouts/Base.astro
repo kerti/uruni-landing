@@ -6,7 +6,7 @@ import Reveal from '../components/Reveal.astro';
 import fontLatin from '@fontsource-variable/plus-jakarta-sans/files/plus-jakarta-sans-latin-wght-normal.woff2?url';
 
 import { APP_REPO_URL, LICENSE_URL } from '../consts';
-import { CANONICAL, HEADLINE } from '../data/copy';
+import { CANONICAL, HEADLINE, SHARE_DESCRIPTION } from '../data/copy';
 
 interface Props {
   title: string;
@@ -72,7 +72,7 @@ const jsonLd = {
     <meta property="og:site_name" content="Uruni" />
     <meta property="og:locale" content="id_ID" />
     <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
+    <meta property="og:description" content={SHARE_DESCRIPTION} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={og.image} />
     <meta property="og:image:width" content={String(og.width)} />
@@ -80,7 +80,7 @@ const jsonLd = {
     <meta property="og:image:alt" content={og.alt} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
+    <meta name="twitter:description" content={SHARE_DESCRIPTION} />
     <meta name="twitter:image" content={og.image} />
     <meta name="twitter:image:alt" content={og.alt} />
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
