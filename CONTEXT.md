@@ -63,6 +63,10 @@ server.
   and `docs/Design-System.md`), and the font (Plus Jakarta Sans via `@fontsource-variable`).
 - **Owned by the landing:** the share image, and compositional tokens built from the app's
   (header height, section padding, tints), kept in a separate block of the token file.
+- 2026-11-03: the share image (`public/og.png`, 2560x1280) is a still of the hero taken from the
+  built page by `npm run og` (`scripts/og-image.mjs`): wordmark, eyebrow, H1 and the resting tally.
+  Rerun it after any change to the hero; re-upload it by hand as the GitHub repository's social
+  preview.
 - 2026-10-28: light theme only, because the app has no dark palette yet (ADR-0008).
 - 2026-10-29: the backdrop is the logomark's dot dropped into water: faint Sage ripples behind the
   hero and the closing section, waves under the close, and two rings around each eyebrow dot. Drawn
