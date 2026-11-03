@@ -2,10 +2,10 @@
 // A grid of icon cards: one column, two by two from 36rem, four in a row from
 // 64rem. Used by Yang dicatat and Server sendiri.
 import Icon from './Icon.astro';
-import { lucide } from '../icons';
+import { phosphor } from '../icons';
 
 interface Props {
-  cards: readonly { icon: keyof typeof lucide; title: string; body: string }[];
+  cards: readonly { icon: keyof typeof phosphor; title: string; body: string }[];
 }
 
 const { cards } = Astro.props;

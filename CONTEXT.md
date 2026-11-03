@@ -39,6 +39,11 @@ holds no one's data. It is free and open source (AGPL-3.0).
 > Aplikasi kas untuk bendahara kelompok kecil: catat dari ponsel, cek kas tunai dan bank, bagikan
 > laporan. Di server sendiri, gratis, sumber terbuka.
 
+**Share description** (Open Graph and Twitter, under 125 characters; approved 2026-11-03):
+
+> Catat kas dari ponsel, cek kas tunai dan bank, bagikan laporan. Di server sendiri, gratis, sumber
+> terbuka.
+
 Deliberate non-features, stated as positioning: Uruni is not an operating system for an RT or an
 organisation, not a payment-chasing or reminder machine, not accounting software, and does not
 connect to banks or QRIS. It is not a tap-to-install consumer app: a technical helper sets up the
@@ -63,7 +68,15 @@ server.
   and `docs/Design-System.md`), and the font (Plus Jakarta Sans via `@fontsource-variable`).
 - **Owned by the landing:** the share image, and compositional tokens built from the app's
   (header height, section padding, tints), kept in a separate block of the token file.
+- 2026-11-03: the share image (`public/og.png`, 2560x1280) is a still of the hero taken from the
+  built page by `npm run og` (`scripts/og-image.mjs`): wordmark, eyebrow, H1 and the resting tally.
+  Rerun it after any change to the hero; re-upload it by hand as the GitHub repository's social
+  preview.
 - 2026-10-28: light theme only, because the app has no dark palette yet (ADR-0008).
+- 2026-10-29: the backdrop is the logomark's dot dropped into water: faint Sage ripples behind the
+  hero and the closing section, waves under the close, and two rings around each eyebrow dot. Drawn
+  once as it scrolls in, then still. No charts or graphs: the app is deliberately not fintech
+  (Design-System.md, principle 5).
 
 ## 5. Value proposition
 
@@ -104,15 +117,15 @@ no "alpha" or "beta" badge, no roadmap promises. Each entry cites where the app 
 | _Talangan_, receipt optional                                                                                       | PRD §7.4                                    |
 | _Amplop_ for an occasion; the leftover rolls into Kas Utama                                                        | PRD §7.5                                    |
 | Public report: one link, no login, read-only                                                                       | PRD §7.9                                    |
+| The public report's monthly PDF, downloadable for printing or the group chat (allowed 2026-11-03)                  | PRD §7.9, `copy/id.ts` (Unduh PDF)          |
 | Posted transactions are never edited or deleted; a fix is a new entry                                              | `CONTEXT.md` Transaction                    |
 | Daily backups when something changed, downloadable and restorable in the app                                       | PRD §7.10, `copy/id.ts` (Cadangan otomatis) |
 | Runs on the community's own server; the project holds no data                                                      | PRD §5, `README.md`                         |
 | Free forever, no paid tier; open source, AGPL-3.0                                                                  | `README.md` principles 7, licence           |
 | Needs a technical helper to set up; needs a connection to use                                                      | PRD §3, §7.2; `README.md`                   |
 
-**Not yet (young or detail; revisit when durable):** the monthly PDF of the report (added
-2026-10-02), the Excel export, the twelve-month dues grid, waiving a _talangan_, per-envelope
-participation, the fund's time zone.
+**Not yet (young or detail; revisit when durable):** the Excel export, the twelve-month dues grid,
+waiving a _talangan_, per-envelope participation, the fund's time zone.
 
 **Never** (non-goals, or false): reminders or payment chasing, member accounts or logins, bank sync,
 QRIS, accounting journals, analytics dashboards, offline use, several treasurers, a hosted version,
@@ -194,7 +207,8 @@ theme, a blog, pricing (there is none), and any hosted signup.
 ## 10. Page structure
 
 Every section has an id, an eyebrow, a heading and a lede. Headings below are working titles; their
-wording is drafted with each slice.
+wording is drafted with each slice. A section earns its place on this page; the list is not a copy of
+another landing page's. 2026-11-03: _Catatan pendiri_ dropped.
 
 1. **Header:** wordmark (scrolls to top), anchors _Cara kerja_ · _Cek kas_ · _Laporan_ · _Server
    sendiri_, GitHub icon. No theme toggle (ADR-0008).
@@ -213,16 +227,15 @@ wording is drafted with each slice.
    akuntansi_, _Sistem RT_), pairing evenly.
 6. **Yang dicatat:** four icon cards: dues by _golongan_, _amplop_, _talangan_, _titipan_.
 7. **Bukti** (`#laporan`): the public report, shown from the demo.
-8. **Catatan pendiri:** placeholder until the maintainer writes it.
-9. **Server sendiri** (`#server-sendiri`): four cards (the community's own server, open source,
+8. **Server sendiri** (`#server-sendiri`): four cards (the community's own server, open source,
    daily backups, nothing deleted) and the honest caveat: setting Uruni up takes someone used to
    running a server.
-10. **Tanya jawab:** plain `<details>`. Questions: _Berapa biayanya?_ · _Ada versi yang tinggal
-    pakai?_ · _Apa yang dibutuhkan untuk memasangnya?_ · _Siapa yang bisa melihat datanya?_ ·
-    _Apakah anggota perlu akun?_ · _Bisa dipakai tanpa internet?_ · _Kalau salah catat?_ · _Kalau
-    ponsel hilang?_ · _Cocok untuk RT yang besar?_ · _Bagaimana cara ikut membantu?_
-11. **Penutup:** both CTAs and the caveat, word for word.
-12. **Footer:** wordmark, the canonical paragraph, links (GitHub, licence, app repo), icon credits.
+9. **Tanya jawab:** plain `<details>`. Questions: _Berapa biayanya?_ · _Ada versi yang tinggal
+   pakai?_ · _Apa yang dibutuhkan untuk memasangnya?_ · _Siapa yang bisa melihat datanya?_ ·
+   _Apakah anggota perlu akun?_ · _Bisa dipakai tanpa internet?_ · _Kalau salah catat?_ · _Kalau
+   ponsel hilang?_ · _Cocok untuk RT yang besar?_ · _Bagaimana cara ikut membantu?_
+10. **Penutup:** both CTAs and the caveat, word for word.
+11. **Footer:** wordmark, the canonical paragraph, links (GitHub, licence, app repo), icon credits.
 
 **Illustrative data** lives in one hand-written module and is set in the demo's world (the
 _CS Shift Sore_ office fund), so the hero drawing and the demo screenshots tell one story.

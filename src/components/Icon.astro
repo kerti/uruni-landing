@@ -1,28 +1,26 @@
 ---
-import { lucide } from '../icons';
+import { phosphor } from '../icons';
 
 interface Props {
-  name: keyof typeof lucide;
+  name: keyof typeof phosphor;
   size?: number;
   class?: string;
 }
 
 const { name, size = 24, class: className } = Astro.props;
+const { shade, ink } = phosphor[name];
 ---
 
+<!-- Phosphor duotone, as the app draws it: the shade at 20% of the icon's
+     colour under the ink. -->
 <svg
   class={className}
   width={size}
   height={size}
-  viewBox="0 0 24 24"
-  fill="none"
-  stroke="currentColor"
-  stroke-width="2"
-  stroke-linecap="round"
-  stroke-linejoin="round"
+  viewBox="0 0 256 256"
+  fill="currentColor"
   aria-hidden="true"
 >
-  {lucide[name].map((d) => (
-    <path d={d} />
-  ))}
+  <path d={shade} opacity="0.2"></path>
+  <path d={ink}></path>
 </svg>

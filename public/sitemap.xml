@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Hand-written for a one-page site. Past a few pages, switch to
+     @astrojs/sitemap. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://uruni.kerti.dev/</loc>
+  </url>
+</urlset>

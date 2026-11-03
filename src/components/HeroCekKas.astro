@@ -34,8 +34,8 @@ const label = `Uang tunai yang dihitung ${rupiah(accounts.tunai.counted)} dan sa
        in a band of their own and never cross the other card's. -->
   <div class="vessel" aria-hidden="true">
     <svg viewBox="0 0 288 320">
-      <rect class="card-bg card-l" width="128" height="116" rx="16"></rect>
-      <rect class="card-bg card-r" x="160" y="92" width="128" height="116" rx="16"></rect>
+      <rect class="card-bg card-l" width="128" height="116" rx="8"></rect>
+      <rect class="card-bg card-r" x="160" y="92" width="128" height="116" rx="8"></rect>
 
       <!-- Each stream is dotted; a solid copy in a mask draws it on. -->
       <mask id="cekkas-draw-l" maskUnits="userSpaceOnUse" x="0" y="0" width="288" height="320">
@@ -82,7 +82,7 @@ const label = `Uang tunai yang dihitung ${rupiah(accounts.tunai.counted)} dan sa
     </div>
     <div class="row acct acct-r">
       <span class="ico-chip">
-        <Icon name="landmark" size={20} />
+        <Icon name="bank" size={20} />
       </span>
       <span class="what">
         <span class="name">{accounts.bank.name}</span>
@@ -173,9 +173,9 @@ const label = `Uang tunai yang dihitung ${rupiah(accounts.tunai.counted)} dan sa
     position: absolute;
     inset: 0;
     z-index: -1;
-    border-radius: 1rem;
+    border-radius: var(--radius);
     background-color: var(--card);
-    box-shadow: var(--shadow-card);
+    box-shadow: var(--shadow-card), var(--ring-card);
   }
   .row {
     display: grid;
@@ -200,7 +200,6 @@ const label = `Uang tunai yang dihitung ${rupiah(accounts.tunai.counted)} dan sa
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    font-weight: 600;
     line-height: 1.5rem;
     white-space: nowrap;
   }
@@ -210,8 +209,9 @@ const label = `Uang tunai yang dihitung ${rupiah(accounts.tunai.counted)} dan sa
     line-height: 1.25rem;
     color: var(--muted-foreground);
   }
+  /* The app's rows: weight marks the figure, never the name. */
   .tally .amt {
-    font-weight: 600;
+    font-weight: 500;
     line-height: 1.5rem;
     white-space: nowrap;
   }
@@ -219,8 +219,12 @@ const label = `Uang tunai yang dihitung ${rupiah(accounts.tunai.counted)} dan sa
   .rec {
     grid-template-columns: 1fr auto;
   }
+  /* The app's Figures total: semibold over a hairline. */
   .row.sum {
-    border-top: 2px solid var(--foreground);
+    font-weight: 600;
+  }
+  .row.sum .amt {
+    font-weight: 600;
   }
   .rec .what,
   .rec .amt {
@@ -232,7 +236,7 @@ const label = `Uang tunai yang dihitung ${rupiah(accounts.tunai.counted)} dan sa
     gap: 0.375rem;
     margin-top: 0.75rem;
     padding: 0.375rem 0.875rem;
-    border-radius: 999px;
+    border-radius: var(--radius);
     background-color: var(--success-soft);
     color: var(--success);
     font-weight: 600;

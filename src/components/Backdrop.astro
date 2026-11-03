@@ -1,0 +1,169 @@
+---
+// The page's backdrop: the logomark's dot dropped into water. Ripples behind
+// the hero (top) and the closing section (bottom), with waves under the close.
+// Wraps the section it decorates. Drawn once as the zone scrolls in, then
+// still; reduced motion shows the resting drawing.
+interface Props {
+  at: 'top' | 'bottom';
+}
+const { at } = Astro.props;
+const rings = [60, 120, 180, 240, 300, 360];
+---
+
+<div class="zone" data-reveal>
+  <slot />
+  {at === 'bottom' && (
+    <div class="waves" aria-hidden="true">
+      <svg viewBox="0 0 1440 220" preserveAspectRatio="none">
+        <path
+          class="wave-back"
+          d="M-240 120 C -120 140, -60 140, 0 100 C 260 150, 520 150, 760 100 S 1220 50, 1440 110 S 1560 150, 1680 120 L1680 220 L-240 220 Z"
+        />
+        <path
+          class="wave-front"
+          d="M-240 150 C -140 140, -60 150, 0 160 C 280 190, 600 180, 860 150 S 1260 130, 1440 170 S 1580 190, 1680 160 L1680 220 L-240 220 Z"
+        />
+      </svg>
+    </div>
+  )}
+  <div class:list={['ripples', at]} aria-hidden="true">
+    <svg viewBox="0 0 720 720">
+      {rings.map((r, i) => (
+        <circle class="ring" cx="360" cy="360" r={r} style={`opacity:${0.4 - i * 0.06};--i:${i}`} />
+      ))}
+      <circle class="drop" cx="360" cy="360" r="9" />
+    </svg>
+  </div>
+</div>
+
+<style>
+  .zone {
+    position: relative;
+  }
+  .ripples,
+  .waves {
+    position: absolute;
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  /* Ripples. Placed by where the dot lands (--cx in from the side, --cy down
+     from the zone's top), so it stays on screen at every width. */
+  .ripples {
+    inset-inline: 0;
+    top: 0;
+    height: 0;
+  }
+  /* Clipped at the section's foot only, so the rings stop at the footer. */
+  .ripples.bottom {
+    inset: 0;
+    height: auto;
+    clip-path: inset(-100rem 0 0 0);
+  }
+  .ripples svg {
+    --size: clamp(20rem, 55vw, 46rem);
+    position: absolute;
+    top: calc(var(--cy) - var(--size) / 2);
+    width: var(--size);
+    height: auto;
+  }
+  .ripples.top svg {
+    --cx: 11rem;
+    --cy: 5rem;
+    right: calc(var(--cx) - var(--size) / 2);
+  }
+  .ripples.bottom svg {
+    --cx: 9rem;
+    --cy: 19rem;
+    left: calc(var(--cx) - var(--size) / 2);
+  }
+  /* Narrower screens: the dot tucks into the corner, above the content.
+     Beside the closing card the margin only fits the dot from 1440 up, so the
+     bottom one moves first. */
+  @media (max-width: 40rem) {
+    .ripples.top svg {
+      --cx: 1.75rem;
+      --cy: 1.5rem;
+    }
+  }
+  @media (max-width: 89.9375rem) {
+    .ripples.bottom svg {
+      --cx: 1.75rem;
+      --cy: 1.75rem;
+    }
+  }
+  .ring {
+    fill: none;
+    stroke: var(--accent);
+    stroke-width: 1.5;
+  }
+  .drop {
+    fill: var(--accent);
+    opacity: 0.45;
+  }
+
+  /* Waves: ground under the closing card, ending on the footer's hairline. */
+  .waves {
+    inset-inline: 0;
+    bottom: 0;
+    height: clamp(4rem, 9vw, 8rem);
+    overflow: hidden;
+  }
+  .waves svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  .wave-back {
+    fill: var(--secondary);
+  }
+  .wave-front {
+    fill: color-mix(in srgb, var(--accent) 22%, var(--secondary));
+  }
+
+  /* The drop lands, the rings spread one after another, and the waves roll in
+     from opposite sides as they fade in. Once, then still. */
+  @media (prefers-reduced-motion: no-preference) {
+    .ring,
+    .drop {
+      transform-box: fill-box;
+      transform-origin: center;
+    }
+    .drop {
+      animation: drop 500ms cubic-bezier(0.3, 0, 0.2, 1) both;
+    }
+    .ring {
+      animation: ring 1400ms cubic-bezier(0.2, 0.7, 0.2, 1) calc(300ms + var(--i) * 180ms) both;
+    }
+    .wave-back {
+      animation: wave-from-left 1800ms cubic-bezier(0.25, 0.6, 0.2, 1) both;
+    }
+    .wave-front {
+      animation: wave-from-right 1800ms cubic-bezier(0.25, 0.6, 0.2, 1) 150ms both;
+    }
+    @keyframes drop {
+      from {
+        opacity: 0;
+        transform: scale(2.5);
+      }
+    }
+    @keyframes ring {
+      from {
+        opacity: 0;
+        transform: scale(0.3);
+      }
+    }
+    @keyframes wave-from-left {
+      from {
+        opacity: 0;
+        transform: translate(-12%, 25%);
+      }
+    }
+    @keyframes wave-from-right {
+      from {
+        opacity: 0;
+        transform: translate(12%, 25%);
+      }
+    }
+  }
+</style>
