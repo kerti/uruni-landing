@@ -10,6 +10,13 @@ const sections: { id: string; label: string }[] = [
   { id: 'laporan', label: 'Laporan' },
   { id: 'server-sendiri', label: 'Server sendiri' },
 ];
+
+interface Props {
+  /** False on pages other than the home page (404): links go back to `/`. */
+  onHome?: boolean;
+}
+const { onHome = true } = Astro.props;
+const home = onHome ? '' : '/';
 ---
 
 <a class="skip-link" href="#content">
@@ -17,7 +24,11 @@ const sections: { id: string; label: string }[] = [
 </a>
 <header class="site-header">
   <div class="container bar">
-    <a class="wordmark" href="#" aria-label="Uruni, kembali ke atas">
+    <a
+      class="wordmark"
+      href={onHome ? '#' : '/'}
+      aria-label={onHome ? 'Uruni, kembali ke atas' : 'Uruni'}
+    >
       <img src="/brand/uruni-lockup-horizontal.svg" alt="" width="184" height="64" />
     </a>
     {sections.length > 0 && (
@@ -25,7 +36,7 @@ const sections: { id: string; label: string }[] = [
         <ul>
           {sections.map((s) => (
             <li>
-              <a href={`#${s.id}`}>{s.label}</a>
+              <a href={`${home}#${s.id}`}>{s.label}</a>
             </li>
           ))}
         </ul>

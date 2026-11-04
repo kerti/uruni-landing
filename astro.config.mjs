@@ -9,6 +9,14 @@ export default defineConfig({
   build: {
     inlineStylesheets: 'always',
   },
+  // Vite inlines assets under 4 KB as data: URIs, which the CSP below refuses
+  // (default-src 'self'). A small font subset was being blocked; keep every
+  // asset a hashed /_astro/ file instead.
+  vite: {
+    build: {
+      assetsInlineLimit: 0,
+    },
+  },
   // No code blocks on the site; Shiki's inline styles would also fight the CSP.
   markdown: {
     syntaxHighlight: false,
