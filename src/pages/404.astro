@@ -1,0 +1,49 @@
+---
+// Cloudflare Pages serves dist/404.html, with a 404 status, for any path that
+// isn't a file. Without it, missing paths answered 200 with the home page.
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Base
+  title="Uruni: halaman tidak ditemukan"
+  description="Alamat ini tidak ada di situs Uruni."
+  share={false}
+>
+  <meta slot="head" name="robots" content="noindex" />
+  <Header onHome={false} />
+  <main id="content" class="container">
+    <h1>Halaman tidak ditemukan</h1>
+    <p>Alamat ini tidak ada di situs Uruni.</p>
+    <p>
+      <a href="/">Kembali ke beranda</a>
+    </p>
+  </main>
+  <Footer />
+</Base>
+
+<style>
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    min-height: 60vh;
+    padding-block: 4rem;
+    text-align: center;
+  }
+  h1 {
+    font-size: clamp(1.75rem, 1.3rem + 2vw, 2.5rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+  p {
+    color: var(--muted-foreground);
+  }
+  a {
+    font-weight: 600;
+  }
+</style>
