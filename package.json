@@ -19,7 +19,9 @@
     "prepare": "git rev-parse --git-dir > /dev/null 2>&1 && sh scripts/hooks-install.sh || true",
     "visual": "node scripts/visual-check.mjs",
     "demo-shots": "node scripts/demo-shots.mjs",
-    "og": "node scripts/og-image.mjs"
+    "og": "node scripts/og-image.mjs",
+    "copy-audit": "node scripts/copy-audit.mjs",
+    "launch-check": "node scripts/launch-check.mjs"
   },
   "dependencies": {
     "@fontsource-variable/plus-jakarta-sans": "^5.3.0",

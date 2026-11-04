@@ -26,6 +26,14 @@ npm run build      # static build to dist/ (what Cloudflare Pages serves)
 npm run check      # the local mirror of CI: lint, format:check, astro check, build
 ```
 
+Checks over the built site (run `npm run build` first; they drive the installed Chrome):
+
+```sh
+npm run visual        # responsive matrix: screenshots, overflow, lone words
+npm run copy-audit    # CONTEXT.md's mechanical copy rules over the rendered text
+npm run launch-check  # build, repo and live-site checks; add -- --lighthouse for scores
+```
+
 ## Hosting
 
 Cloudflare Pages through its Git integration (ADR-0002), config in ADR-0006.
