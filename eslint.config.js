@@ -15,7 +15,7 @@ export default [
   },
   {
     // These scripts pass functions into the page, where they run in a browser.
-    files: ['scripts/visual-check.mjs', 'scripts/demo-shots.mjs'],
+    files: ['scripts/visual-check.mjs', 'scripts/demo-shots.mjs', 'scripts/copy-audit.mjs'],
     languageOptions: { globals: { ...globals.node, ...globals.browser } },
   },
   {
