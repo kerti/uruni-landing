@@ -57,7 +57,7 @@ const REVIEW = [
   [
     'never-claim word: right only when the page says it is not offered',
     /\b(pengingat|QRIS|sinkron(isasi)? bank|jurnal akuntansi|offline|tanpa internet|multi[- ]?mata uang|versi (yang )?tinggal pakai|app store|play store)\b/gi,
-    // A struck-through non-feature (YangBukan) says so in its hidden prefix.
+    // A struck-through non-feature (FokusUruni) says so in its hidden prefix.
     /Tidak termasuk:\s*[^\n]*$/,
   ],
   [

@@ -13,6 +13,9 @@ which owns the domain vocabulary. Copy here stays at value-proposition altitude.
 domain term is needed, borrow the app's word (_kas_, _cek kas_, _cocok_, _selisih_, _amplop_,
 _titipan_, _talangan_, _golongan_, _laporan publik_) and never coin a synonym.
 
+**Kas Utama is the only name for the main pool** (2026-11-05). Never _kas rutin_, _kas bulanan_,
+_kas umum_ or any other stand-in, in copy, alt text or examples.
+
 **Never use one group's private names as generic examples** (2026-10-28). _Kas bidang_ is what one
 workplace calls its parent-unit fund, not a general term: it never appears in copy, alt text,
 examples or illustrative data. Describe a _titipan_ by what it does (money collected to be
@@ -130,6 +133,7 @@ no "alpha" or "beta" badge, no roadmap promises. Each entry cites where the app 
 | Runs on the community's own server; the project holds no data                                                      | PRD §5, `README.md`                         |
 | Free forever, no paid tier; open source, AGPL-3.0                                                                  | `README.md` principles 7, licence           |
 | Needs a technical helper to set up; needs a connection to use                                                      | PRD §3, §7.2; `README.md`                   |
+| Needs someone to keep the server running and upgraded (allowed 2026-11-05)                                         | `SELF-HOSTING.md` (Upgrading)               |
 
 **Not yet (young or detail; revisit when durable):** the Excel export, the twelve-month dues grid,
 waiving a _talangan_, per-envelope participation, the fund's time zone.
@@ -249,7 +253,8 @@ what Uruni does, and sit beside the server caveat as the "is this for us?" pair.
    pakai?_ · _Apa yang dibutuhkan untuk memasangnya?_ · _Siapa yang bisa melihat datanya?_ ·
    _Apakah anggota perlu akun?_ · _Bisa dipakai tanpa internet?_ · _Kalau salah catat?_ · _Kalau
    ponsel hilang?_ · _Bisa untuk RT yang besar?_ · _Bagaimana cara ikut membantu?_ (2026-11-05:
-   _Bisa_ replaces _Cocok_, which the page keeps for records matching the money.)
+   _Bisa_ replaces _Cocok_. The page keeps _cocok_ for records matching the money; the one exception
+   is the closing heading, _pasang kalau cocok_, whose wordplay on the headline is deliberate.)
 10. **Penutup:** both CTAs and the caveat, word for word. 2026-11-05: a lede that invites a demo
     visit and asks the treasurer to bring in someone who can install it; no new selling points.
 11. **Footer:** wordmark, the canonical paragraph, links (GitHub, licence, app repo), icon credits.
