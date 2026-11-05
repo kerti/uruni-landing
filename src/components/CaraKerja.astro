@@ -1,6 +1,6 @@
 ---
 // Cara kerja: three steps, each beside a screenshot of the demo. Copy approved
-// 2026-10-28. The screenshots come from scripts/demo-shots.mjs; retake them
+// 2026-10-28; heading and step 3 title revised 2026-11-05. The screenshots come from scripts/demo-shots.mjs; retake them
 // with npm run demo-shots, never by hand.
 import { Picture } from 'astro:assets';
 import catat from '../assets/demo/catat.png';
@@ -25,7 +25,7 @@ const steps = [
     alt: `Layar Cek kas: Tunai ${rupiah(accounts.tunai.counted)} dan Rekening Bank ${rupiah(accounts.bank.counted)} sama dengan catatan; keduanya bertanda Cocok.`,
   },
   {
-    title: 'Bagikan satu tautan',
+    title: 'Bagikan laporan kepada anggota',
     body: 'Anggota membaca laporan kas lewat satu tautan, tanpa <span lang="en">login</span> dan tanpa bisa mengubah apa pun.',
     image: laporan,
     alt: 'Kartu Laporan publik di Pengaturan, dengan tautan laporan serta tombol Salin, Bagikan, Buka laporan, dan Unduh PDF.',
@@ -38,7 +38,7 @@ const steps = [
     <div class="rise" data-reveal>
       <p class="eyebrow">Cara kerja</p>
       <h2 id="cara-kerja-title" class="section-title">
-        Kebiasaan kecil yang membuat kas tetap rapi.
+        Kas tetap rapi, tanpa tambah rumit.
       </h2>
     </div>
 
