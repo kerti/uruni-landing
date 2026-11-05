@@ -136,7 +136,8 @@ waiving a _talangan_, per-envelope participation, the fund's time zone.
 
 **Never** (non-goals, or false): reminders or payment chasing, member accounts or logins, bank sync,
 QRIS, accounting journals, analytics dashboards, offline use, several treasurers, a hosted version,
-an app-store install, multi-currency.
+an app-store install, multi-currency, resident records (_data warga_; `Positioning.md` non-goals,
+added 2026-11-05).
 
 **Who checks the money:** Uruni never looks at the money itself. The treasurer counts the cash and
 reads the bank balance; Uruni compares those figures with the records and shows the _selisih_. Never
@@ -235,7 +236,9 @@ what Uruni does, and sit beside the server caveat as the "is this for us?" pair.
 6. **Bukti** (`#laporan`): the public report, shown from the demo.
 7. **Fokus Uruni:** one ticked chip (_Kas bersama kelompok kecil_) and five struck-through
    non-features (_Pengingat tagihan_, _Akun untuk anggota_, _Sinkron bank dan QRIS_, _Jurnal
-   akuntansi_, _Sistem RT_), pairing evenly.
+   akuntansi_, _Data warga_), pairing evenly. 2026-11-05: _Data warga_ replaces _Sistem RT_, which
+   struck out a named audience (an RT's treasurer is welcome; the FAQ says so). What Uruni leaves
+   out is the RT's administration, starting with resident records.
 8. **Server sendiri** (`#server-sendiri`): four cards (the community's own server, open source,
    daily backups, nothing deleted) and the honest caveat: setting Uruni up takes someone used to
    running a server.
