@@ -200,8 +200,9 @@ where a break reads badly.
 - **Secondary:** **Panduan pemasangan**, linking to the app's `SELF-HOSTING.md`, with _(bahasa
   Inggris)_ beside it because the guide is in English.
 - **Caveat under the buttons** (it matches the notice on the demo's own login screen):
-  _Tanpa daftar. Datanya rekaan dan siapa pun bisa mengubahnya; demo kembali bersih paling lama
-  setiap jam._
+  _Tanpa daftar. Datanya rekaan dan siapa pun bisa mengubahnya, jadi jangan simpan data asli di
+  sana. Demo kembali bersih paling lama setiap jam._ 2026-11-05: restores the demo notice's warning
+  not to keep real data there, which the first version dropped.
 - **Fact chips** (text, not links), two by two: _Gratis selamanya_ · _Sumber terbuka_ · _Di server
   sendiri_ · _Berbahasa Indonesia_.
 - The closing CTA repeats both buttons and the caveat word for word.

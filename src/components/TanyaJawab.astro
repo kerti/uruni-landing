@@ -2,7 +2,7 @@
 // Tanya jawab: plain <details>, no script (CONTEXT.md section 10, item 10).
 // Answers approved 2026-10-28; each stays inside the claims list. Q8 rests on
 // the PRD's "losing the phone loses nothing" (§8), which follows from the data
-// living on the server.
+// living on the server; 2026-11-05 scopes it to the records, not "nothing".
 import Icon from './Icon.astro';
 import { APP_REPO_URL, DEMO_URL, SELF_HOSTING_URL } from '../consts';
 
@@ -99,7 +99,10 @@ const ext = { target: '_blank', rel: 'noopener noreferrer' };
           Kalau ponsel hilang?
           <Icon name="caretDown" size={20} />
         </summary>
-        <p>Tidak ada yang hilang. Semua catatan ada di server; masuk saja dari ponsel lain.</p>
+        <p>
+          Catatannya tidak ikut hilang. Semuanya tersimpan di server, bukan di ponsel; masuk saja
+          dari ponsel lain.
+        </p>
       </details>
       <details>
         <summary>
