@@ -12,13 +12,10 @@ import TanyaJawab from '../components/TanyaJawab.astro';
 import Penutup from '../components/Penutup.astro';
 import Footer from '../components/Footer.astro';
 import Backdrop from '../components/Backdrop.astro';
-import { HEADLINE, META_DESCRIPTION } from '../data/copy';
+import { META_DESCRIPTION, PAGE_TITLE } from '../data/copy';
 ---
 
-<Base
-  title={`Uruni: ${HEADLINE.charAt(0).toLowerCase()}${HEADLINE.slice(1)}`}
-  description={META_DESCRIPTION}
->
+<Base title={PAGE_TITLE} description={META_DESCRIPTION}>
   <meta slot="head" name="robots" content="noindex" />
   <Header />
   <main id="content">

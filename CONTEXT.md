@@ -34,6 +34,10 @@ holds no one's data. It is free and open source (AGPL-3.0).
 > dengan uang yang ada. Uruni berjalan di server milik kelompok itu sendiri; proyek Uruni tidak
 > menyimpan data siapa pun. Gratis, selamanya.
 
+**Page title** (2026-11-05; says what the page is, and no longer follows the H1):
+
+> Uruni: aplikasi kas untuk bendahara kelompok kecil
+
 **Meta description** (under 160 characters):
 
 > Aplikasi kas untuk bendahara kelompok kecil: catat dari ponsel, cek kas tunai dan bank, bagikan
