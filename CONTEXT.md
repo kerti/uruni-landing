@@ -240,8 +240,10 @@ what Uruni does, and sit beside the server caveat as the "is this for us?" pair.
    struck out a named audience (an RT's treasurer is welcome; the FAQ says so). What Uruni leaves
    out is the RT's administration, starting with resident records.
 8. **Server sendiri** (`#server-sendiri`): four cards (the community's own server, open source,
-   daily backups, nothing deleted) and the honest caveat: setting Uruni up takes someone used to
-   running a server.
+   daily backups, history kept whole) and the honest caveat: setting Uruni up and keeping it running
+   takes someone used to running a server. 2026-11-05: the fourth card's title moves from _Tidak ada
+   yang dihapus_, which could read as "nothing can be lost", to _Riwayat tetap utuh_; the claim is
+   only that posted transactions are never edited or deleted. The caveat gains _merawat_.
 9. **Tanya jawab:** plain `<details>`. Questions: _Berapa biayanya?_ · _Ada versi yang tinggal
    pakai?_ · _Apa yang dibutuhkan untuk memasangnya?_ · _Siapa yang bisa melihat datanya?_ ·
    _Apakah anggota perlu akun?_ · _Bisa dipakai tanpa internet?_ · _Kalau salah catat?_ · _Kalau
