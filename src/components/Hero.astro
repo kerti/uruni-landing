@@ -5,8 +5,8 @@ import Ctas from './Ctas.astro';
 import HeroCekKas from './HeroCekKas.astro';
 import { HEADLINE } from '../data/copy';
 
-// The H1 is the page title too; only the hook takes the accent.
-const HOOK = 'selalu cocok';
+// Only the hook takes the accent.
+const HOOK = 'cocok';
 const [before, after] = HEADLINE.split(HOOK);
 if (after === undefined) throw new Error(`The headline lost its hook, "${HOOK}"`);
 

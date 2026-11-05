@@ -1,8 +1,9 @@
 ---
 // Kenapa: why cek kas is the point, from the problem in the app's PRD (§2).
-// Copy approved 2026-10-28. Beside it, a still cek kas showing the other
-// outcome from the hero's: the cash is cocok, the bank has a selisih, drawn
-// the way the app's Cek kas screen draws them.
+// Copy approved 2026-10-28; paragraphs 2 and 3 revised 2026-11-05. Beside it,
+// a still cek kas showing the other outcome from the hero's: the cash is
+// cocok, the bank has a selisih, drawn the way the app's Cek kas screen draws
+// them.
 import Icon from './Icon.astro';
 import { accounts, selisihCheck } from '../data/fund';
 import { rupiah } from '../lib/format';
@@ -31,14 +32,13 @@ const label = `Cek kas: uang tunai yang dihitung ${rupiah(selisihCheck.tunai.cou
           di dompet, sebagian di rekening, kadang rekening pribadi bendahara sendiri.
         </p>
         <p>
-          Lalu ada yang mengambil uang tunai untuk belanja dan lupa mencatatnya, atau kas rutin
+          Lalu ada yang mengambil uang tunai untuk belanja dan lupa mencatatnya, atau Kas Utama
           tercampur dengan uang sumbangan. Angkanya pelan-pelan bergeser, dan selisihnya baru
-          ketahuan saat harus dicari.
+          ketahuan saat sudah sulit dilacak.
         </p>
         <p>
-          Uruni mencatat saldo per lokasi, jadi saat kamu menghitung tunai dan melihat saldo
-          rekening, kelihatan di lokasi mana selisihnya. Cek kas sesering yang kamu mau; setiap
-          hasilnya tersimpan, jadi selisih kecil ketahuan sebelum menumpuk.
+          Karena saldo dicatat per lokasi, kelihatan di mana selisihnya. Cek kas sesering yang kamu
+          mau, dan selisih kecil ketahuan sebelum&nbsp;menumpuk.
         </p>
       </div>
     </div>

@@ -13,6 +13,9 @@ which owns the domain vocabulary. Copy here stays at value-proposition altitude.
 domain term is needed, borrow the app's word (_kas_, _cek kas_, _cocok_, _selisih_, _amplop_,
 _titipan_, _talangan_, _golongan_, _laporan publik_) and never coin a synonym.
 
+**Kas Utama is the only name for the main pool** (2026-11-05). Never _kas rutin_, _kas bulanan_,
+_kas umum_ or any other stand-in, in copy, alt text or examples.
+
 **Never use one group's private names as generic examples** (2026-10-28). _Kas bidang_ is what one
 workplace calls its parent-unit fund, not a general term: it never appears in copy, alt text,
 examples or illustrative data. Describe a _titipan_ by what it does (money collected to be
@@ -33,6 +36,10 @@ holds no one's data. It is free and open source (AGPL-3.0).
 > dari ponsel, uang tunai dan rekening bank dipisahkan, dan cek kas menunjukkan apakah catatan cocok
 > dengan uang yang ada. Uruni berjalan di server milik kelompok itu sendiri; proyek Uruni tidak
 > menyimpan data siapa pun. Gratis, selamanya.
+
+**Page title** (2026-11-05; says what the page is, and no longer follows the H1):
+
+> Uruni: aplikasi kas untuk bendahara kelompok kecil
 
 **Meta description** (under 160 characters):
 
@@ -81,9 +88,12 @@ server.
 ## 5. Value proposition
 
 - **Eyebrow:** Untuk bendahara kas kelompok kecil
-- **Headline (H1):** Catatan kas yang **selalu cocok** dengan uang yang ada.
-  The accent is on _selalu cocok_. It is the app's emotional core (_Tenang, karena catatan selalu
-  cocok dengan uang yang ada_) without the _tenang_, which the page should earn rather than claim.
+- **Headline (H1):** Selalu tahu apakah catatan kas **cocok** dengan uang yang ada.
+  The accent is on _cocok_, the word the hero illustration ends on. 2026-11-05: replaces _Catatan
+  kas yang selalu cocok dengan uang yang ada_, which promised an outcome Uruni cannot guarantee (an
+  entry can be forgotten, cash can be miscounted). Uruni promises the knowing: every _cek kas_
+  answers _cocok_ or shows the _selisih_ (PRD §1: "always know the recorded balance matches the
+  real money"). The _tenang_ stays unclaimed; the page should earn it.
 - **Subhead:** Catat uang masuk dan keluar dari ponsel. Saat cek kas, kamu menghitung uang tunai dan
   melihat saldo rekening; Uruni membandingkannya dengan catatan dan menunjukkan selisihnya kalau ada.
 
@@ -123,13 +133,15 @@ no "alpha" or "beta" badge, no roadmap promises. Each entry cites where the app 
 | Runs on the community's own server; the project holds no data                                                      | PRD §5, `README.md`                         |
 | Free forever, no paid tier; open source, AGPL-3.0                                                                  | `README.md` principles 7, licence           |
 | Needs a technical helper to set up; needs a connection to use                                                      | PRD §3, §7.2; `README.md`                   |
+| Needs someone to keep the server running and upgraded (allowed 2026-11-05)                                         | `SELF-HOSTING.md` (Upgrading)               |
 
 **Not yet (young or detail; revisit when durable):** the Excel export, the twelve-month dues grid,
 waiving a _talangan_, per-envelope participation, the fund's time zone.
 
 **Never** (non-goals, or false): reminders or payment chasing, member accounts or logins, bank sync,
 QRIS, accounting journals, analytics dashboards, offline use, several treasurers, a hosted version,
-an app-store install, multi-currency.
+an app-store install, multi-currency, resident records (_data warga_; `Positioning.md` non-goals,
+added 2026-11-05).
 
 **Who checks the money:** Uruni never looks at the money itself. The treasurer counts the cash and
 reads the bank balance; Uruni compares those figures with the records and shows the _selisih_. Never
@@ -192,8 +204,9 @@ where a break reads badly.
 - **Secondary:** **Panduan pemasangan**, linking to the app's `SELF-HOSTING.md`, with _(bahasa
   Inggris)_ beside it because the guide is in English.
 - **Caveat under the buttons** (it matches the notice on the demo's own login screen):
-  _Tanpa daftar. Datanya rekaan dan siapa pun bisa mengubahnya; demo kembali bersih paling lama
-  setiap jam._
+  _Tanpa daftar. Datanya rekaan dan siapa pun bisa mengubahnya, jadi jangan simpan data asli di
+  sana. Demo kembali bersih paling lama setiap jam._ 2026-11-05: restores the demo notice's warning
+  not to keep real data there, which the first version dropped.
 - **Fact chips** (text, not links), two by two: _Gratis selamanya_ · _Sumber terbuka_ · _Di server
   sendiri_ · _Berbahasa Indonesia_.
 - The closing CTA repeats both buttons and the caveat word for word.
@@ -208,7 +221,9 @@ theme, a blog, pricing (there is none), and any hosted signup.
 
 Every section has an id, an eyebrow, a heading and a lede. Headings below are working titles; their
 wording is drafted with each slice. A section earns its place on this page; the list is not a copy of
-another landing page's. 2026-11-03: _Catatan pendiri_ dropped.
+another landing page's. 2026-11-03: _Catatan pendiri_ dropped. 2026-11-05: _Fokus Uruni_ (was
+_Yang bukan Uruni_) moves after _Bukti_, so the limits read as a choice once the page has shown
+what Uruni does, and sit beside the server caveat as the "is this for us?" pair.
 
 1. **Header:** wordmark (scrolls to top), anchors _Cara kerja_ · _Cek kas_ · _Laporan_ · _Server
    sendiri_, GitHub icon. No theme toggle (ADR-0008).
@@ -222,19 +237,26 @@ another landing page's. 2026-11-03: _Catatan pendiri_ dropped.
    kas_, _Bagikan laporan_.
 4. **Kenapa** (`#cek-kas`): the insight from the validated treasurer. The hard part is not chasing
    late payers; it is making the records match the money, which sits in two places.
-5. **Yang bukan Uruni:** one ticked chip (_Kas bersama kelompok kecil_) and five struck-through
+5. **Yang dicatat:** four icon cards: dues by _golongan_, _amplop_, _talangan_, _titipan_.
+6. **Bukti** (`#laporan`): the public report, shown from the demo.
+7. **Fokus Uruni:** one ticked chip (_Kas bersama kelompok kecil_) and five struck-through
    non-features (_Pengingat tagihan_, _Akun untuk anggota_, _Sinkron bank dan QRIS_, _Jurnal
-   akuntansi_, _Sistem RT_), pairing evenly.
-6. **Yang dicatat:** four icon cards: dues by _golongan_, _amplop_, _talangan_, _titipan_.
-7. **Bukti** (`#laporan`): the public report, shown from the demo.
+   akuntansi_, _Data warga_), pairing evenly. 2026-11-05: _Data warga_ replaces _Sistem RT_, which
+   struck out a named audience (an RT's treasurer is welcome; the FAQ says so). What Uruni leaves
+   out is the RT's administration, starting with resident records.
 8. **Server sendiri** (`#server-sendiri`): four cards (the community's own server, open source,
-   daily backups, nothing deleted) and the honest caveat: setting Uruni up takes someone used to
-   running a server.
+   daily backups, history kept whole) and the honest caveat: setting Uruni up and keeping it running
+   takes someone used to running a server. 2026-11-05: the fourth card's title moves from _Tidak ada
+   yang dihapus_, which could read as "nothing can be lost", to _Riwayat tetap utuh_; the claim is
+   only that posted transactions are never edited or deleted. The caveat gains _merawat_.
 9. **Tanya jawab:** plain `<details>`. Questions: _Berapa biayanya?_ · _Ada versi yang tinggal
    pakai?_ · _Apa yang dibutuhkan untuk memasangnya?_ · _Siapa yang bisa melihat datanya?_ ·
    _Apakah anggota perlu akun?_ · _Bisa dipakai tanpa internet?_ · _Kalau salah catat?_ · _Kalau
-   ponsel hilang?_ · _Cocok untuk RT yang besar?_ · _Bagaimana cara ikut membantu?_
-10. **Penutup:** both CTAs and the caveat, word for word.
+   ponsel hilang?_ · _Bisa untuk RT yang besar?_ · _Bagaimana cara ikut membantu?_ (2026-11-05:
+   _Bisa_ replaces _Cocok_. The page keeps _cocok_ for records matching the money; the one exception
+   is the closing heading, _pasang kalau cocok_, whose wordplay on the headline is deliberate.)
+10. **Penutup:** both CTAs and the caveat, word for word. 2026-11-05: a lede that invites a demo
+    visit and asks the treasurer to bring in someone who can install it; no new selling points.
 11. **Footer:** wordmark, the canonical paragraph, links (GitHub, licence, app repo), icon credits.
 
 **Illustrative data** lives in one hand-written module and is set in the demo's world (the
