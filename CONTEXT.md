@@ -248,8 +248,10 @@ what Uruni does, and sit beside the server caveat as the "is this for us?" pair.
 9. **Tanya jawab:** plain `<details>`. Questions: _Berapa biayanya?_ · _Ada versi yang tinggal
    pakai?_ · _Apa yang dibutuhkan untuk memasangnya?_ · _Siapa yang bisa melihat datanya?_ ·
    _Apakah anggota perlu akun?_ · _Bisa dipakai tanpa internet?_ · _Kalau salah catat?_ · _Kalau
-   ponsel hilang?_ · _Cocok untuk RT yang besar?_ · _Bagaimana cara ikut membantu?_
-10. **Penutup:** both CTAs and the caveat, word for word.
+   ponsel hilang?_ · _Bisa untuk RT yang besar?_ · _Bagaimana cara ikut membantu?_ (2026-11-05:
+   _Bisa_ replaces _Cocok_, which the page keeps for records matching the money.)
+10. **Penutup:** both CTAs and the caveat, word for word. 2026-11-05: a lede that invites a demo
+    visit and asks the treasurer to bring in someone who can install it; no new selling points.
 11. **Footer:** wordmark, the canonical paragraph, links (GitHub, licence, app repo), icon credits.
 
 **Illustrative data** lives in one hand-written module and is set in the demo's world (the
