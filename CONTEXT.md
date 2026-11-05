@@ -215,7 +215,9 @@ theme, a blog, pricing (there is none), and any hosted signup.
 
 Every section has an id, an eyebrow, a heading and a lede. Headings below are working titles; their
 wording is drafted with each slice. A section earns its place on this page; the list is not a copy of
-another landing page's. 2026-11-03: _Catatan pendiri_ dropped.
+another landing page's. 2026-11-03: _Catatan pendiri_ dropped. 2026-11-05: _Fokus Uruni_ (was
+_Yang bukan Uruni_) moves after _Bukti_, so the limits read as a choice once the page has shown
+what Uruni does, and sit beside the server caveat as the "is this for us?" pair.
 
 1. **Header:** wordmark (scrolls to top), anchors _Cara kerja_ · _Cek kas_ · _Laporan_ · _Server
    sendiri_, GitHub icon. No theme toggle (ADR-0008).
@@ -229,11 +231,11 @@ another landing page's. 2026-11-03: _Catatan pendiri_ dropped.
    kas_, _Bagikan laporan_.
 4. **Kenapa** (`#cek-kas`): the insight from the validated treasurer. The hard part is not chasing
    late payers; it is making the records match the money, which sits in two places.
-5. **Yang bukan Uruni:** one ticked chip (_Kas bersama kelompok kecil_) and five struck-through
+5. **Yang dicatat:** four icon cards: dues by _golongan_, _amplop_, _talangan_, _titipan_.
+6. **Bukti** (`#laporan`): the public report, shown from the demo.
+7. **Fokus Uruni:** one ticked chip (_Kas bersama kelompok kecil_) and five struck-through
    non-features (_Pengingat tagihan_, _Akun untuk anggota_, _Sinkron bank dan QRIS_, _Jurnal
    akuntansi_, _Sistem RT_), pairing evenly.
-6. **Yang dicatat:** four icon cards: dues by _golongan_, _amplop_, _talangan_, _titipan_.
-7. **Bukti** (`#laporan`): the public report, shown from the demo.
 8. **Server sendiri** (`#server-sendiri`): four cards (the community's own server, open source,
    daily backups, nothing deleted) and the honest caveat: setting Uruni up takes someone used to
    running a server.
