@@ -81,9 +81,12 @@ server.
 ## 5. Value proposition
 
 - **Eyebrow:** Untuk bendahara kas kelompok kecil
-- **Headline (H1):** Catatan kas yang **selalu cocok** dengan uang yang ada.
-  The accent is on _selalu cocok_. It is the app's emotional core (_Tenang, karena catatan selalu
-  cocok dengan uang yang ada_) without the _tenang_, which the page should earn rather than claim.
+- **Headline (H1):** Selalu tahu apakah catatan kas **cocok** dengan uang yang ada.
+  The accent is on _cocok_, the word the hero illustration ends on. 2026-11-05: replaces _Catatan
+  kas yang selalu cocok dengan uang yang ada_, which promised an outcome Uruni cannot guarantee (an
+  entry can be forgotten, cash can be miscounted). Uruni promises the knowing: every _cek kas_
+  answers _cocok_ or shows the _selisih_ (PRD §1: "always know the recorded balance matches the
+  real money"). The _tenang_ stays unclaimed; the page should earn it.
 - **Subhead:** Catat uang masuk dan keluar dari ponsel. Saat cek kas, kamu menghitung uang tunai dan
   melihat saldo rekening; Uruni membandingkannya dengan catatan dan menunjukkan selisihnya kalau ada.
 

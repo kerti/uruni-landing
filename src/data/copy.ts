@@ -17,4 +17,4 @@ export const SHARE_DESCRIPTION =
 
 /** The hero's H1, without its full stop: the H1, the page title and the share
  *  card's alt text. */
-export const HEADLINE = 'Catatan kas yang selalu cocok dengan uang yang ada';
+export const HEADLINE = 'Selalu tahu apakah catatan kas cocok dengan uang yang ada';
