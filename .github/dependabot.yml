@@ -14,6 +14,11 @@ updates:
       # doesn't bury a runtime bump.
       dev-dependencies:
         dependency-type: development
+    ignore:
+      # @astrojs/check 0.9.12 peers on typescript ^5 || ^6, so a TS major breaks
+      # npm ci. Drop this once @astrojs/check accepts the next major.
+      - dependency-name: typescript
+        update-types: [version-update:semver-major]
 
   - package-ecosystem: github-actions
     directory: /
