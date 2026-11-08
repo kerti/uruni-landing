@@ -15,6 +15,11 @@ export const META_DESCRIPTION =
 export const SHARE_DESCRIPTION =
   'Catat kas dari ponsel, cek kas tunai dan bank, bagikan laporan. Di server sendiri, gratis, sumber terbuka.';
 
-/** The hero's H1, without its full stop: the H1, the page title and the share
- *  card's alt text. */
-export const HEADLINE = 'Catatan kas yang selalu cocok dengan uang yang ada';
+/** The page title: what the page is, for search results and the browser tab.
+ *  Kept apart from the H1 so a headline change doesn't move it. Approved
+ *  2026-11-05. */
+export const PAGE_TITLE = 'Uruni: aplikasi kas untuk bendahara kelompok kecil';
+
+/** The hero's H1, without its full stop: the H1 and the share card's alt
+ *  text. */
+export const HEADLINE = 'Selalu tahu apakah catatan kas cocok dengan uang yang ada';

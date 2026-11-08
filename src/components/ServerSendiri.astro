@@ -1,7 +1,8 @@
 ---
 // Server sendiri: where the data lives and why it is safe there, then the
-// honest caveat about setting it up. Copy approved 2026-10-28; every card is
-// on CONTEXT.md's claims list. Talks to the group, so kalian (CONTEXT.md 7).
+// honest caveat about setting it up and keeping it running. Copy approved
+// 2026-10-28, revised 2026-11-05; every card and the caveat are on
+// CONTEXT.md's claims list. Talks to the group, so kalian (CONTEXT.md 7).
 import IconCards from './IconCards.astro';
 import { SELF_HOSTING_URL } from '../consts';
 
@@ -23,8 +24,8 @@ const cards = [
   },
   {
     icon: 'clockCounterClockwise',
-    title: 'Tidak ada yang dihapus',
-    body: 'Transaksi yang sudah tersimpan tidak bisa diubah atau dihapus. Salah catat dibetulkan dengan catatan baru, jadi riwayatnya tetap utuh.',
+    title: 'Riwayat tetap utuh',
+    body: 'Transaksi yang sudah tersimpan tidak bisa diubah atau dihapus. Salah catat dibetulkan dengan catatan baru.',
   },
 ] as const;
 ---
@@ -44,8 +45,8 @@ const cards = [
 
     <div class="caveat rise" data-reveal>
       <p>
-        Memasang Uruni butuh seseorang yang terbiasa mengurus <span lang="en">server</span>. Setelah
-        terpasang, bendahara cukup memakainya dari ponsel.
+        Memasang dan merawat Uruni butuh seseorang yang terbiasa mengurus{' '}
+        <span lang="en">server</span>. Sehari-hari, bendahara cukup memakainya dari ponsel.
       </p>
       <a href={SELF_HOSTING_URL} target="_blank" rel="noopener noreferrer">
         Panduan pemasangan <span class="lang">(bahasa Inggris)</span>

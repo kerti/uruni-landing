@@ -1,7 +1,8 @@
 ---
 // Cara kerja: three steps, each beside a screenshot of the demo. Copy approved
-// 2026-10-28. The screenshots come from scripts/demo-shots.mjs; retake them
-// with npm run demo-shots, never by hand.
+// 2026-10-28; heading and steps 1 and 3 revised 2026-11-05. The screenshots
+// come from scripts/demo-shots.mjs; retake them with npm run demo-shots, never
+// by hand.
 import { Picture } from 'astro:assets';
 import catat from '../assets/demo/catat.png';
 import cekKas from '../assets/demo/cek-kas.png';
@@ -14,7 +15,7 @@ import { rupiah } from '../lib/format';
 const steps = [
   {
     title: 'Catat saat itu juga',
-    body: 'Uang masuk atau keluar dicatat dari ponsel dalam beberapa ketukan, di warung atau di kantor. Setiap catatan menyebut lokasinya (tunai atau rekening) dan posnya.',
+    body: 'Uang masuk atau keluar dicatat dari ponsel dalam beberapa ketukan, di warung atau di kantor. Setiap catatan menyebut lokasinya (tunai atau rekening) dan posnya (misalnya Kas Utama atau amplop).',
     image: catat,
     alt: `Layar Catat pengeluaran: ${rupiah(75_000)} dari Tunai untuk Kas Utama, dengan catatan Snack rapat bulanan.`,
   },
@@ -25,8 +26,8 @@ const steps = [
     alt: `Layar Cek kas: Tunai ${rupiah(accounts.tunai.counted)} dan Rekening Bank ${rupiah(accounts.bank.counted)} sama dengan catatan; keduanya bertanda Cocok.`,
   },
   {
-    title: 'Bagikan satu tautan',
-    body: 'Anggota membaca laporan kas lewat satu tautan, tanpa <span lang="en">login</span> dan tanpa bisa mengubah apa pun.',
+    title: 'Bagikan laporan kepada anggota',
+    body: 'Anggota membuka laporan lewat satu tautan, dan PDF bulanannya bisa diunduh untuk dicetak atau dikirim ke grup.',
     image: laporan,
     alt: 'Kartu Laporan publik di Pengaturan, dengan tautan laporan serta tombol Salin, Bagikan, Buka laporan, dan Unduh PDF.',
   },
@@ -38,7 +39,7 @@ const steps = [
     <div class="rise" data-reveal>
       <p class="eyebrow">Cara kerja</p>
       <h2 id="cara-kerja-title" class="section-title">
-        Kebiasaan kecil yang membuat kas tetap rapi.
+        Kas tetap rapi, tanpa tambah rumit.
       </h2>
     </div>
 
