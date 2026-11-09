@@ -1,6 +1,31 @@
 @import '@fontsource-variable/plus-jakarta-sans';
 @import './tokens.css';
 
+/* Fallbacks sized to Plus Jakarta Sans, so text wraps the same before and
+   after the web font arrives and nothing shifts when it swaps in. Without
+   them the hero's H1 gains a line on phones and pushes the page down.
+   Values are capsize's formula (average latin character width for
+   size-adjust, the web font's ascent and descent in the fallback's terms),
+   from Plus Jakarta Sans 400 against Arial (macOS, iOS, Windows) and Roboto
+   (Android, which has no Arial). */
+@font-face {
+  font-family: 'Plus Jakarta Sans Fallback Arial';
+  src: local('Arial'), local('ArialMT');
+  size-adjust: 104.98%;
+  ascent-override: 98.88%;
+  descent-override: 21.15%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: 'Plus Jakarta Sans Fallback Roboto';
+  src: local('Roboto'), local('Roboto-Regular');
+  size-adjust: 105.21%;
+  ascent-override: 98.66%;
+  descent-override: 21.1%;
+  line-gap-override: 0%;
+}
+
 *,
 *::before,
 *::after {
@@ -8,7 +33,11 @@
 }
 
 html {
-  font-family: var(--font-sans);
+  /* --font-sans is the app's stack, copied verbatim; the sized fallbacks
+     slot in right after the web font. */
+  font-family:
+    'Plus Jakarta Sans Variable', 'Plus Jakarta Sans Fallback Arial',
+    'Plus Jakarta Sans Fallback Roboto', var(--font-sans);
   background-color: var(--background);
   color: var(--foreground);
   -webkit-text-size-adjust: 100%;
