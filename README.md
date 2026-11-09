@@ -13,7 +13,7 @@ written in Bahasa Indonesia.
 
 ## Status
 
-Pre-launch: a placeholder page is live at <https://uruni.kerti.dev>. No content yet.
+Live at <https://uruni.kerti.dev>.
 
 ## Local development
 
