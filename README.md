@@ -1,8 +1,42 @@
-# uruni-landing
+<div align="center">
 
-The landing site for **Uruni**, a calm app for keeping a small community's shared money honest.
-The app lives in [`kerti/uruni`](https://github.com/kerti/uruni); this repo is only the website,
-written in Bahasa Indonesia.
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/kerti/uruni/main/docs/brand/uruni-lockup-horizontal-reversed.svg">
+  <img src="public/brand/uruni-lockup-horizontal.svg" alt="Uruni" width="276" height="96">
+</picture>
+
+### The landing site for Uruni
+
+**[uruni.kerti.dev](https://uruni.kerti.dev)**, in Bahasa Indonesia, for the treasurer nobody trained.
+
+[Website](https://uruni.kerti.dev) · [The app](https://github.com/kerti/uruni) · [Live demo](https://demo.uruni.kerti.dev) · [Self-hosting](https://github.com/kerti/uruni/blob/main/SELF-HOSTING.md)
+
+[![CI](https://github.com/kerti/uruni-landing/actions/workflows/ci.yml/badge.svg)](https://github.com/kerti/uruni-landing/actions/workflows/ci.yml)
+[![gitleaks](https://github.com/kerti/uruni-landing/actions/workflows/gitleaks.yml/badge.svg)](https://github.com/kerti/uruni-landing/actions/workflows/gitleaks.yml)
+[![License: AGPL-3.0](https://img.shields.io/badge/License-AGPL--3.0-blue.svg)](LICENSE)
+
+<br>
+
+<img src="docs/screenshots/desktop.png" alt="The landing page on a desktop: the headline 'Selalu tahu apakah catatan kas cocok dengan uang yang ada.', the 'Coba demo' button, and a cash-check card where the counted money matches the records" width="560">&nbsp;
+<img src="docs/screenshots/phone.png" alt="The same hero on a phone, the headline and both buttons stacked in one column" width="160">
+
+</div>
+
+---
+
+## What this repo is
+
+**Uruni** is a calm, free, self-hosted app for keeping a small community's shared money honest:
+dues, collections and reimbursements recorded from a phone, and a cash check that shows whether
+the records match the real money. The app, its docs and its domain model live in
+[`kerti/uruni`](https://github.com/kerti/uruni).
+
+This repo is only the website that introduces it: one static page in Bahasa Indonesia, built with
+Astro and served by Cloudflare Pages. It holds no app code, and has no forms, cookies or analytics of its own (ADR-0001).
+
+The app owns the domain and the brand. Words come from the app's
+[`CONTEXT.md`](https://github.com/kerti/uruni/blob/main/CONTEXT.md); tokens, lockups and favicon are
+copied verbatim from the app; and the page claims only what the app actually does.
 
 **New here?**
 
@@ -13,7 +47,8 @@ written in Bahasa Indonesia.
 
 ## Status
 
-Live at <https://uruni.kerti.dev>.
+Live at <https://uruni.kerti.dev>. The app itself is in public alpha; see its
+[README](https://github.com/kerti/uruni#status).
 
 ## Local development
 
@@ -40,4 +75,6 @@ Cloudflare Pages through its Git integration (ADR-0002), config in ADR-0006.
 `main` publishes to <https://uruni.kerti.dev>; every PR gets a preview URL.
 CI holds no deploy secrets.
 
-Licensed under [AGPL-3.0](LICENSE).
+## License
+
+[AGPL-3.0](LICENSE), like [the app](https://github.com/kerti/uruni).
