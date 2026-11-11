@@ -43,7 +43,7 @@ Run or confirm each, and report it alongside the script's output:
 - **CSP negative test:** an inline `<script>` added to a built page in DevTools must not run, and the console shows no violations except the beacon (until #8).
 - **Share card:** `public/og.png` regenerated after any hero change (`npm run og`), legible at about 600x300, and re-uploaded by hand as the GitHub repository's social preview (Settings, General, Social preview; there is no API).
 - **Cloudflare Pages settings** (dashboard, maintainer): a Pages project, Node from `.nvmrc` plus the env var, the custom domain, previews on PRs, Web Analytics off.
-- **Pre-commit gitleaks hook:** `gitleaks version` works and a staged test secret is refused (then unstaged).
+- **Pre-commit gitleaks hook:** `gitleaks version` works and a staged test secret is refused (then unstaged). Use a random token such as `ghp_` plus 36 random letters and digits; documentation keys like AWS's `...EXAMPLE...` are allowlisted and get committed. Branch on the commit's exit code, so a commit that slips through is undone.
 
 ## 4. Report, then wait
 
