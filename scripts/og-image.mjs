@@ -53,6 +53,9 @@ const CARD = `
   }
   .hero .grid { grid-template-columns: 1fr 24rem !important; gap: 4rem !important; }
   .hero h1 { font-size: 4.25rem !important; text-wrap: balance; }
+  /* The eyebrow, scaled up so it reads at share size; nudged right so its
+     outer ring, not just the dot, lines up with the H1. */
+  .hero .eyebrow { zoom: 1.5; margin-left: 0.75rem; }
   .waves { height: 5.5rem !important; }
   .hero .cekkas { transform: scale(1.1); transform-origin: center; }
 `;
