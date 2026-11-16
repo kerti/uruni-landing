@@ -133,7 +133,7 @@ check(
 );
 
 // ----------------------------------------------------------------- repo ----
-const run = (cmd, argv) => spawnSync(cmd, argv, { encoding: 'utf8' });
+const run = (cmd, argv, opts = {}) => spawnSync(cmd, argv, { encoding: 'utf8', ...opts });
 const audit = run('npm', ['audit', '--json']);
 try {
   const v = JSON.parse(audit.stdout).metadata.vulnerabilities;
@@ -277,22 +277,56 @@ if (local || !base) {
 }
 
 // ----------------------------------------------------------- lighthouse ----
+// Fetched once up front, with a progress line and a timeout: on a cold npx
+// cache and a slow registry the download alone once ran 30+ minutes, silently.
+const FETCH_TIMEOUT = 10 * 60_000;
+const RUN_TIMEOUT = 3 * 60_000;
+const timedOut = (r) => r.error?.code === 'ETIMEDOUT';
+let lighthouseReady = false;
 if (lighthouse && !local && base) {
+  console.error(`launch-check: fetching ${LIGHTHOUSE} (the first run downloads it)...`);
+  const fetched = run('npx', ['--yes', LIGHTHOUSE, '--version'], {
+    stdio: ['ignore', 'pipe', 'pipe'],
+    timeout: FETCH_TIMEOUT,
+  });
+  lighthouseReady = fetched.status === 0;
+  if (!lighthouseReady) {
+    report(
+      'FAIL',
+      `lighthouse: fetch ${LIGHTHOUSE}`,
+      timedOut(fetched)
+        ? `no download after ${FETCH_TIMEOUT / 60_000} min; if npx then reports ENOENT on a package.json, delete that ~/.npm/_npx/<hash> folder and rerun`
+        : (fetched.stderr || 'npx failed').trim().split('\n').pop(),
+    );
+  }
+}
+if (lighthouseReady) {
   const dir = mkdtempSync(join(tmpdir(), 'launch-check-'));
   for (const form of ['mobile', 'desktop']) {
+    console.error(`launch-check: lighthouse ${form}...`);
     const out = join(dir, `${form}.json`);
-    const lh = run('npx', [
-      '--yes',
-      LIGHTHOUSE,
-      `${base}/`,
-      ...(form === 'desktop' ? ['--preset=desktop'] : []),
-      '--chrome-flags=--headless=new',
-      '--output=json',
-      `--output-path=${out}`,
-      '--quiet',
-    ]);
+    const lh = run(
+      'npx',
+      [
+        '--yes',
+        LIGHTHOUSE,
+        `${base}/`,
+        ...(form === 'desktop' ? ['--preset=desktop'] : []),
+        '--chrome-flags=--headless=new',
+        '--output=json',
+        `--output-path=${out}`,
+        '--quiet',
+      ],
+      { timeout: RUN_TIMEOUT },
+    );
     if (lh.status !== 0 || !existsSync(out)) {
-      report('FAIL', `lighthouse ${form}`, (lh.stderr || 'did not run').trim().split('\n').pop());
+      report(
+        'FAIL',
+        `lighthouse ${form}`,
+        timedOut(lh)
+          ? `no report after ${RUN_TIMEOUT / 60_000} min`
+          : (lh.stderr || 'did not run').trim().split('\n').pop(),
+      );
       continue;
     }
     const r = JSON.parse(readFileSync(out, 'utf8'));
