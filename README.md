@@ -52,7 +52,7 @@ Live at <https://uruni.kerti.dev>. The app itself is in public alpha; see its
 
 ## Local development
 
-Prerequisites: Node 24 (pinned in `.nvmrc`), and `brew install gitleaks jq` for the local hooks.
+Prerequisites: Node 26 (pinned in `.nvmrc`), and `brew install gitleaks jq` for the local hooks.
 
 ```sh
 npm install        # the "prepare" script also installs the git hooks
