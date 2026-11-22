@@ -1,6 +1,6 @@
 # 0006: Concrete deploy config and production domain
 
-**Status:** accepted, 2026-10-28
+**Status:** accepted, 2026-10-28. The Node line is superseded by [ADR-0010](0010-node-newest-lts.md).
 
 ## Decision
 
@@ -11,7 +11,7 @@ Record the Cloudflare Pages configuration in the repo, not only in the dashboard
 - Project name: `uruni-landing` (default subdomain `uruni-landing.pages.dev`)
 - Repo: `kerti/uruni-landing`, production branch `main`
 - Build command: `npm run build`; output directory: `dist`
-- Node: `24`, from `.nvmrc`, reinforced by a `NODE_VERSION=24` project variable
+- Node: the newest LTS line, from `.nvmrc`, reinforced by a matching `NODE_VERSION` project variable (ADR-0010; was `24` at launch)
 - No environment secrets (ADR-0001, ADR-0002)
 - Production domain: **`uruni.kerti.dev`**, added under the Pages project's custom domains (DNS and
   TLS by Cloudflare). Previews on every PR.
